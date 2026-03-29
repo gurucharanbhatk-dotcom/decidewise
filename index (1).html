@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DecideWise — Make the Right Decision in 60 Seconds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<!-- ═══ SEO META TAGS ═══ -->
+<meta name="description" content="Make the right decision in 60 seconds. DecideWise is a smart decision engine with AI mode, scoring, and 25+ templates for job, career, life decisions.">
+<meta name="keywords" content="decision making tool, decision engine, AI decision, compare options, job offer comparison, career decision">
+<meta property="og:title" content="DecideWise — Make the Right Decision in 60 Seconds">
+<meta property="og:description" content="Structured decision scoring + AI analysis. Not just a chatbot — a system.">
+<meta property="og:url" content="https://decidewise.netlify.app/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://decidewise.netlify.app/">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+<!-- ═══ GOOGLE SEARCH CONSOLE VERIFICATION ═══ -->
+<!-- STEP: Replace content value with your actual code from Google Search Console -->
+<!-- Get it at: search.google.com/search-console → Add Property → HTML tag option -->
+<!-- REPLACE: <meta name="google-site-verification" content="YOUR_CODE_HERE" /> -->
+
+<!-- ═══ GOOGLE ADSENSE ═══ -->
+<!-- STEP: Replace ca-pub-XXXXXXXXXXXXXXXX with your actual AdSense publisher ID -->
+<!-- Get it at: adsense.google.com after account approval -->
+<!-- UNCOMMENT the line below once you have your AdSense ID -->
+<!-- ADSENSE: <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root {
+  --bg:#0a0a0f; --surface:#12121a; --surface2:#1a1a26; --border:#2a2a3d;
+  --accent:#6c63ff; --accent2:#ff6584; --accent3:#43e97b; --accent4:#f9ca24;
+  --text:#e8e8f0; --text-muted:#7a7a9a; --text-dim:#4a4a6a;
+  --font-head:'Syne',sans-serif; --font-body:'DM Sans',sans-serif;
+  --radius:16px; --radius-sm:10px; --glow:0 0 40px rgba(108,99,255,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.5;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(10,10,15,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.logo{font-family:var(--font-head);font-size:22px;font-weight:800;background:linear-gradient(135deg,#6c63ff,#ff6584);-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;}
+.nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.nav-btn{background:none;border:1px solid var(--border);color:var(--text-muted);padding:7px 16px;border-radius:8px;font-family:var(--font-body);font-size:13px;cursor:pointer;transition:all 0.2s;}
+.nav-btn:hover,.nav-btn.active{border-color:var(--accent);color:var(--accent);}
+.nav-btn.primary{background:linear-gradient(135deg,var(--accent),#8b5cf6);border-color:transparent;color:#fff;}
+.nav-btn.primary:hover{opacity:0.85;}
+.pro-glow{box-shadow:0 0 16px rgba(108,99,255,0.5);}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh;position:relative;z-index:1;}
+.page.active{display:block;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;}
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);}
+.orb1{width:400px;height:400px;background:rgba(108,99,255,0.12);top:-100px;right:-100px;}
+.orb2{width:300px;height:300px;background:rgba(255,101,132,0.08);bottom:100px;left:-80px;}
+.orb3{width:200px;height:200px;background:rgba(67,233,123,0.07);bottom:200px;right:200px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(108,99,255,0.12);border:1px solid rgba(108,99,255,0.3);color:var(--accent);padding:8px 18px;border-radius:100px;font-size:13px;font-weight:500;margin-bottom:32px;letter-spacing:0.5px;}
+.hero h1{font-family:var(--font-head);font-size:clamp(40px,7vw,88px);font-weight:800;line-height:1.0;letter-spacing:-2px;margin-bottom:24px;}
+.hero h1 .line2{display:block;background:linear-gradient(135deg,#6c63ff 0%,#ff6584 50%,#43e97b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{font-size:clamp(15px,2vw,19px);color:var(--text-muted);max-width:560px;line-height:1.6;margin-bottom:48px;font-weight:300;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+.btn-hero{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:12px;font-family:var(--font-body);font-size:15px;font-weight:500;cursor:pointer;transition:all 0.25s;border:none;text-decoration:none;}
+.btn-primary-hero{background:linear-gradient(135deg,#6c63ff,#8b5cf6);color:#fff;box-shadow:0 8px 32px rgba(108,99,255,0.35);}
+.btn-primary-hero:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(108,99,255,0.5);}
+.btn-secondary-hero{background:var(--surface);border:1px solid var(--border);color:var(--text);}
+.btn-secondary-hero:hover{border-color:var(--accent);color:var(--accent);}
+.stats{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;margin-top:60px;}
+.stat-item{text-align:center;}
+.stat-num{font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--accent);}
+.stat-label{font-size:13px;color:var(--text-muted);margin-top:4px;}
+
+/* ── SECTION ── */
+section{position:relative;z-index:1;}
+.section-inner{max-width:1100px;margin:0 auto;padding:80px 20px;}
+.section-title{font-family:var(--font-head);font-size:clamp(26px,4vw,42px);font-weight:800;letter-spacing:-1px;margin-bottom:12px;}
+.section-sub{color:var(--text-muted);font-size:15px;margin-bottom:40px;}
+.label-chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(108,99,255,0.15);color:var(--accent);padding:5px 12px;border-radius:100px;margin-bottom:16px;}
+
+/* ── APP ── */
+#app{max-width:1000px;margin:0 auto;padding:0 20px 80px;}
+.mode-switcher{display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:6px;margin-bottom:32px;}
+.mode-tab{flex:1;padding:13px 16px;border-radius:10px;border:none;background:none;font-family:var(--font-body);font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.mode-tab.active{background:var(--accent);color:#fff;box-shadow:0 4px 20px rgba(108,99,255,0.4);}
+.panel{display:none;animation:fadeIn 0.3s ease;}
+.panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── CARDS ── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;margin-bottom:18px;}
+.card-title{font-family:var(--font-head);font-size:17px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+
+/* ── INPUTS ── */
+.templates-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.template-chip{background:var(--surface2);border:1px solid var(--border);padding:9px 14px;border-radius:100px;font-size:13px;color:var(--text-muted);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:5px;}
+.template-chip:hover,.template-chip.active{border-color:var(--accent);color:var(--accent);background:rgba(108,99,255,0.1);}
+input[type=text],input[type=number],textarea,select{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:14px;outline:none;transition:border-color 0.2s;width:100%;}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);}
+textarea{resize:vertical;min-height:80px;}
+input[type=range]{-webkit-appearance:none;height:4px;background:var(--border);border-radius:2px;border:none;padding:0;flex:1;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:pointer;}
+.range-val{font-size:13px;color:var(--accent);font-weight:700;min-width:24px;text-align:right;}
+
+/* ── OPTIONS ── */
+.options-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:16px;}
+.option-card{background:var(--surface2);border:2px solid var(--border);border-radius:var(--radius-sm);padding:18px;transition:border-color 0.2s;}
+.option-card:hover{border-color:var(--accent);}
+.option-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.option-num{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.option-del{background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:17px;padding:0;}
+.option-del:hover{color:var(--accent2);}
+.factor-score-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;}
+.factor-score-label{font-size:12px;color:var(--text-muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:8px;}
+.score-stars{display:flex;gap:3px;}
+.star{width:22px;height:22px;border-radius:4px;border:1px solid var(--border);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text-dim);}
+.star.active{background:var(--accent4);border-color:var(--accent4);color:#000;}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--radius-sm);border:none;font-family:var(--font-body);font-size:14px;font-weight:500;cursor:pointer;transition:all 0.2s;}
+.btn-accent{background:var(--accent);color:#fff;}
+.btn-accent:hover{opacity:0.85;}
+.btn-outline{background:none;border:1px solid var(--border);color:var(--text-muted);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.btn-success{background:var(--accent3);color:#000;}
+.btn-danger{background:var(--accent2);color:#fff;}
+.btn-sm{padding:7px 13px;font-size:13px;}
+.btn-gold{background:linear-gradient(135deg,#f9ca24,#f0932b);color:#000;font-weight:700;}
+
+/* ── RESULTS ── */
+.results-box{background:linear-gradient(135deg,rgba(108,99,255,0.08),rgba(67,233,123,0.05));border:1px solid rgba(108,99,255,0.3);border-radius:var(--radius);padding:28px;margin-top:20px;}
+.results-title{font-family:var(--font-head);font-size:20px;font-weight:800;margin-bottom:20px;}
+.winner-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:linear-gradient(135deg,var(--accent3),#20bf6b);color:#000;border-radius:100px;font-weight:700;font-size:15px;margin-bottom:20px;}
+.result-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.result-bar-label{font-size:13px;min-width:130px;color:var(--text-muted);}
+.result-bar-track{flex:1;background:var(--surface2);border-radius:4px;height:9px;overflow:hidden;}
+.result-bar-fill{height:100%;border-radius:4px;background:var(--accent);transition:width 1s ease;}
+.result-bar-score{font-size:13px;font-weight:700;color:var(--accent);min-width:38px;text-align:right;}
+.reasoning-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.reasoning-block{background:var(--surface2);border-radius:var(--radius-sm);padding:14px;}
+.reasoning-block h4{font-size:12px;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:5px;}
+.reasoning-block ul{list-style:none;}
+.reasoning-block li{font-size:12px;color:var(--text-muted);padding:4px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:7px;}
+.reasoning-block li:last-child{border:none;}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.ai-action{background:rgba(249,202,36,0.1);border:1px solid rgba(249,202,36,0.3);border-radius:var(--radius-sm);padding:14px 18px;margin-top:14px;font-size:13px;display:flex;gap:10px;align-items:flex-start;}
+.ai-action strong{color:var(--accent4);display:block;margin-bottom:3px;font-size:11px;text-transform:uppercase;letter-spacing:1px;}
+
+/* ── AI PANEL ── */
+.ai-textarea{width:100%;min-height:120px;background:var(--surface2);border:2px solid var(--border);border-radius:var(--radius);color:var(--text);padding:18px;font-size:15px;font-family:var(--font-body);resize:none;outline:none;transition:border-color 0.2s;line-height:1.6;}
+.ai-textarea:focus{border-color:var(--accent);}
+.ai-textarea::placeholder{color:var(--text-dim);}
+.ai-result{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;margin-top:18px;display:none;}
+.ai-result.show{display:block;animation:fadeIn 0.4s ease;}
+.ai-recommendation{background:linear-gradient(135deg,rgba(108,99,255,0.15),rgba(255,101,132,0.08));border-left:4px solid var(--accent);padding:18px 22px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:20px;}
+.ai-recommendation h3{font-family:var(--font-head);font-size:19px;margin-bottom:7px;}
+.ai-recommendation p{color:var(--text-muted);font-size:14px;line-height:1.7;}
+.ai-sections{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.ai-section{background:var(--surface2);border-radius:var(--radius-sm);padding:16px;}
+.ai-section h4{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:10px;}
+.ai-section li{font-size:13px;color:var(--text-muted);padding:4px 0;display:flex;gap:7px;line-height:1.5;list-style:none;}
+.tick{color:var(--accent3);}
+.cross{color:var(--accent2);}
+.loading-dots{display:flex;gap:6px;justify-content:center;align-items:center;padding:18px;}
+.loading-dots span{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:bounce 1s infinite;}
+.loading-dots span:nth-child(2){animation-delay:0.2s;}
+.loading-dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes bounce{0%,80%,100%{transform:scale(0.8);opacity:0.5}40%{transform:scale(1.2);opacity:1}}
+
+/* ── SAVED ── */
+.saved-item{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:border-color 0.2s;margin-bottom:10px;}
+.saved-item:hover{border-color:var(--accent);}
+.saved-meta{font-size:11px;color:var(--text-dim);margin-top:3px;}
+.saved-winner{font-size:12px;color:var(--accent3);font-weight:600;}
+
+/* ── PRO LOCK ── */
+.pro-lock-overlay{position:relative;}
+.pro-lock-overlay::after{content:'🔒 PRO';position:absolute;inset:0;background:rgba(10,10,15,0.82);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--accent4);backdrop-filter:blur(3px);z-index:10;}
+
+/* ── PRICING PAGE ── */
+.pricing-page{padding:100px 20px 80px;max-width:960px;margin:0 auto;}
+.pricing-hero{text-align:center;margin-bottom:60px;}
+.pricing-hero h1{font-family:var(--font-head);font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-1.5px;margin-bottom:14px;}
+.pricing-hero p{color:var(--text-muted);font-size:16px;max-width:500px;margin:0 auto;}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:48px;}
+.pricing-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:32px 28px;position:relative;transition:all 0.25s;}
+.pricing-card:hover{transform:translateY(-4px);box-shadow:var(--glow);}
+.pricing-card.featured{border-color:var(--accent);background:linear-gradient(135deg,rgba(108,99,255,0.08),rgba(108,99,255,0.02));}
+.pricing-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:10px;font-weight:800;letter-spacing:2px;padding:4px 14px;border-radius:100px;}
+.plan-name{font-family:var(--font-head);font-size:20px;font-weight:800;margin-bottom:6px;}
+.plan-desc{font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.5;}
+.plan-price{font-family:var(--font-head);font-size:40px;font-weight:800;line-height:1;margin-bottom:4px;}
+.plan-price span{font-size:16px;color:var(--text-muted);font-weight:400;}
+.plan-period{font-size:12px;color:var(--text-dim);margin-bottom:24px;}
+.plan-features{list-style:none;margin-bottom:28px;}
+.plan-features li{font-size:13px;color:var(--text-muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start;}
+.plan-features li:last-child{border:none;}
+.plan-features .check{color:var(--accent3);flex-shrink:0;}
+.plan-features .x{color:var(--text-dim);flex-shrink:0;}
+.pay-btn{width:100%;padding:14px;border-radius:var(--radius-sm);border:none;font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer;transition:all 0.25s;}
+.pay-btn-free{background:var(--surface2);color:var(--text);border:1px solid var(--border);}
+.pay-btn-free:hover{border-color:var(--accent);color:var(--accent);}
+.pay-btn-pro{background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;box-shadow:0 6px 24px rgba(108,99,255,0.35);}
+.pay-btn-pro:hover{transform:translateY(-1px);box-shadow:0 10px 32px rgba(108,99,255,0.5);}
+.pay-btn-gold{background:linear-gradient(135deg,#f9ca24,#f0932b);color:#000;font-weight:700;}
+.pay-btn-gold:hover{opacity:0.9;}
+.pay-per-use-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px;}
+.ppu-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;transition:all 0.2s;}
+.ppu-card:hover{border-color:var(--accent2);transform:translateY(-2px);}
+.ppu-price{font-family:var(--font-head);font-size:36px;font-weight:800;color:var(--accent2);margin-bottom:4px;}
+.ppu-label{font-size:14px;font-weight:600;margin-bottom:6px;}
+.ppu-desc{font-size:12px;color:var(--text-dim);margin-bottom:16px;line-height:1.5;}
+.compare-table{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:48px;}
+.compare-table table{width:100%;border-collapse:collapse;}
+.compare-table th{background:var(--surface2);padding:14px 16px;font-family:var(--font-head);font-size:13px;font-weight:700;text-align:left;border-bottom:1px solid var(--border);}
+.compare-table th:first-child{width:40%;}
+.compare-table td{padding:12px 16px;font-size:13px;color:var(--text-muted);border-bottom:1px solid var(--border);}
+.compare-table tr:last-child td{border:none;}
+.compare-table td:not(:first-child){text-align:center;}
+.yes{color:var(--accent3);font-weight:700;}
+.no{color:var(--text-dim);}
+.limited{color:var(--accent4);}
+
+/* ── PAYMENT MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;display:none;}
+.modal-overlay.show{display:flex;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;animation:fadeIn 0.3s ease;position:relative;}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-muted);font-size:20px;cursor:pointer;line-height:1;}
+.modal-close:hover{color:var(--text);}
+.modal h3{font-family:var(--font-head);font-size:22px;font-weight:800;margin-bottom:6px;}
+.modal .modal-sub{color:var(--text-muted);font-size:14px;margin-bottom:24px;}
+.payment-methods{display:flex;flex-direction:column;gap:12px;}
+.pay-method{background:var(--surface2);border:2px solid var(--border);border-radius:var(--radius-sm);padding:18px 20px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:14px;}
+.pay-method:hover{border-color:var(--accent);}
+.pay-method.selected{border-color:var(--accent);background:rgba(108,99,255,0.08);}
+.pay-method-icon{font-size:24px;width:40px;text-align:center;}
+.pay-method-text h4{font-size:14px;font-weight:600;margin-bottom:2px;}
+.pay-method-text p{font-size:12px;color:var(--text-muted);}
+.upi-detail{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;margin-top:14px;text-align:center;display:none;}
+.upi-detail.show{display:block;}
+.upi-id-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-family:monospace;font-size:15px;color:var(--accent);margin:12px 0;display:flex;align-items:center;justify-content:space-between;}
+.copy-btn{background:none;border:none;color:var(--accent);cursor:pointer;font-size:13px;font-family:var(--font-body);}
+.qr-placeholder{width:160px;height:160px;background:var(--bg);border:2px dashed var(--border);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 12px;color:var(--text-dim);font-size:13px;text-align:center;gap:8px;}
+.amount-badge{background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;padding:8px 20px;border-radius:100px;font-family:var(--font-head);font-size:18px;font-weight:800;display:inline-block;margin-bottom:16px;}
+.razorpay-btn{width:100%;padding:14px;background:linear-gradient(135deg,#528FF0,#3667EA);color:#fff;border:none;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.2s;margin-top:14px;}
+.razorpay-btn:hover{opacity:0.9;}
+.unlock-box{margin-top:20px;border-top:1px solid var(--border);padding-top:20px;}
+.unlock-box h4{font-size:14px;font-weight:600;margin-bottom:10px;}
+.unlock-row{display:flex;gap:8px;}
+.unlock-row input{flex:1;font-family:monospace;letter-spacing:2px;}
+
+/* ── LEGAL PAGES ── */
+.legal-page{padding:100px 20px 80px;max-width:760px;margin:0 auto;}
+.legal-page h1{font-family:var(--font-head);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;margin-bottom:8px;}
+.legal-meta{font-size:13px;color:var(--text-dim);margin-bottom:40px;}
+.legal-section{margin-bottom:36px;}
+.legal-section h2{font-family:var(--font-head);font-size:20px;font-weight:700;margin-bottom:12px;color:var(--text);}
+.legal-section h3{font-size:15px;font-weight:600;margin-bottom:8px;margin-top:16px;color:var(--text-muted);}
+.legal-section p{font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:10px;}
+.legal-section ul{margin-left:20px;margin-bottom:10px;}
+.legal-section ul li{font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:4px;}
+.legal-highlight{background:rgba(108,99,255,0.08);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:16px 0;}
+.legal-highlight p{margin:0;font-size:13px;}
+.legal-warning{background:rgba(255,101,132,0.08);border-left:3px solid var(--accent2);padding:14px 18px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:16px 0;}
+.legal-warning p{margin:0;font-size:13px;color:var(--accent2);}
+.legal-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+.legal-nav a{font-size:13px;color:var(--text-muted);text-decoration:none;padding:6px 14px;border:1px solid var(--border);border-radius:100px;transition:all 0.2s;}
+.legal-nav a:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── HOW TO USE ── */
+.how-step{display:flex;gap:20px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border);}
+.how-step:last-child{border:none;}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:18px;font-weight:800;flex-shrink:0;}
+.step-content h3{font-family:var(--font-head);font-size:18px;font-weight:700;margin-bottom:8px;}
+.step-content p{font-size:14px;color:var(--text-muted);line-height:1.7;}
+.weight-explainer{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:20px 0;}
+.weight-row{display:flex;align-items:center;gap:14px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.weight-row:last-child{border:none;margin:0;padding:0;}
+.weight-badge{font-family:var(--font-head);font-size:20px;font-weight:800;min-width:32px;}
+.weight-info h4{font-size:14px;font-weight:600;margin-bottom:2px;}
+.weight-info p{font-size:13px;color:var(--text-muted);}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:40px 20px;position:relative;z-index:1;}
+.footer-inner{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;}
+.footer-brand{flex:1;min-width:200px;}
+.footer-logo{font-family:var(--font-head);font-size:20px;font-weight:800;background:linear-gradient(135deg,#6c63ff,#ff6584);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+.footer-brand p{font-size:13px;color:var(--text-dim);line-height:1.6;}
+.footer-links h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:12px;}
+.footer-links a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:8px;transition:color 0.2s;}
+.footer-links a:hover{color:var(--accent);}
+.footer-bottom{max-width:960px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-bottom p{font-size:12px;color:var(--text-dim);}
+.footer-disclaimer{font-size:11px;color:var(--text-dim);line-height:1.6;margin-top:8px;}
+
+/* ── ADMIN ── */
+.astat{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 18px;flex:1;min-width:100px;text-align:center;}
+.astat-n{font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--accent);}
+.astat-l{font-size:12px;color:var(--text-dim);margin-top:3px;}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;right:28px;z-index:300;background:var(--surface);border:1px solid var(--accent);color:var(--text);padding:13px 18px;border-radius:var(--radius-sm);font-size:13px;box-shadow:0 8px 32px rgba(0,0,0,0.4);transform:translateY(80px);opacity:0;transition:all 0.3s;max-width:300px;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* ── PRO BANNER ── */
+.pro-banner{background:linear-gradient(135deg,rgba(108,99,255,0.1),rgba(255,101,132,0.08));border:1px solid rgba(108,99,255,0.25);border-radius:var(--radius);padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px;flex-wrap:wrap;}
+.pro-banner h4{font-family:var(--font-head);font-size:17px;margin-bottom:4px;}
+.pro-banner p{font-size:13px;color:var(--text-muted);}
+.pro-badge-pill{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#f9ca24,#f0932b);color:#000;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:800;letter-spacing:1px;}
+
+/* ── FEATURES ── */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;}
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:all 0.25s;}
+.feature-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--glow);}
+.feature-icon{font-size:26px;margin-bottom:14px;display:block;}
+.feature-card h3{font-family:var(--font-head);font-size:16px;font-weight:700;margin-bottom:7px;}
+.feature-card p{font-size:13px;color:var(--text-muted);line-height:1.6;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  nav{padding:12px 16px;}
+  .nav-links{gap:4px;}
+  .nav-btn{padding:6px 10px;font-size:12px;}
+  .reasoning-grid,.ai-sections{grid-template-columns:1fr;}
+  .section-inner{padding:48px 14px;}
+  #app{padding:0 10px 60px;}
+  .pay-per-use-row,.pricing-grid{grid-template-columns:1fr;}
+  .pricing-page,.legal-page{padding:80px 14px 60px;}
+  .modal{padding:22px;}
+  .compare-table{overflow-x:auto;}
+  .footer-inner{gap:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="logo" onclick="showPage('home')">DecideWise</div>
+  <div class="nav-links">
+    <button class="nav-btn" onclick="showPage('home');scrollToApp()">Try Now</button>
+    <button class="nav-btn" onclick="showPage('pricing')">Pricing</button>
+    <button class="nav-btn" onclick="showPage('howto')">How to Use</button>
+    <button class="nav-btn" onclick="showPage('contact')">Help</button>
+    <button class="nav-btn" id="pro-status-btn" onclick="showPage('pricing')" style="display:none;"></button>
+    <button class="nav-btn primary pro-glow" id="upgrade-nav-btn" onclick="showPage('pricing')">✨ Upgrade ₹99</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HOME PAGE ═══════════════════════════ -->
+<div class="page active" id="page-home">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+  <div class="hero-badge">⚡ Smart Decision Engine</div>
+  <h1>
+    <span>Make the right</span>
+    <span class="line2">decision in 60 sec</span>
+  </h1>
+  <p class="hero-sub">Stop overthinking. DecideWise gives you a structured, scored, AI-powered decision framework — not just a chatbot.</p>
+  <div class="hero-ctas">
+    <button class="btn-hero btn-primary-hero" onclick="scrollToApp()">🧠 Start Deciding — Free</button>
+    <button class="btn-hero btn-secondary-hero" onclick="scrollToApp();switchMode('ai')">✨ Try AI Mode</button>
+  </div>
+  <div class="stats">
+    <div class="stat-item"><div class="stat-num">25+</div><div class="stat-label">Templates</div></div>
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Modes</div></div>
+    <div class="stat-item"><div class="stat-num">60s</div><div class="stat-label">Avg decision time</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Structured</div></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section>
+  <div class="section-inner">
+    <div class="label-chip">Why DecideWise</div>
+    <div class="section-title">Not a chatbot. A <em>system</em>.</div>
+    <div class="section-sub">ChatGPT gives text. We give scored, explainable decisions with a structured framework.</div>
+    <div class="features-grid">
+      <div class="feature-card"><span class="feature-icon">⚖️</span><h3>Score-Based Engine</h3><p>Every option gets a weighted score. Know exactly why one choice wins.</p></div>
+      <div class="feature-card"><span class="feature-icon">🤖</span><h3>AI Mode</h3><p>Describe your situation. Get recommendation, reasoning, pros/cons, next steps.</p></div>
+      <div class="feature-card"><span class="feature-icon">📋</span><h3>25+ Templates</h3><p>Job offer, MBA, city move, buy vs rent, startup vs job — one click setup.</p></div>
+      <div class="feature-card"><span class="feature-icon">💾</span><h3>Save & Revisit</h3><p>Save decisions, revisit them, track how your thinking evolves.</p></div>
+      <div class="feature-card"><span class="feature-icon">📄</span><h3>PDF Report <span class="pro-badge-pill">PRO</span></h3><p>Export your decision as a clean PDF — share with mentors or family.</p></div>
+      <div class="feature-card"><span class="feature-icon">👥</span><h3>Team Decisions <span class="pro-badge-pill">PRO</span></h3><p>Collaborate with others on a shared decision — coming soon.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP ANCHOR -->
+<div id="app-anchor"></div>
+<section>
+  <div class="section-inner" style="padding-top:30px;">
+    <div class="label-chip">The Engine</div>
+    <div class="section-title">Make your decision</div>
+    <div class="section-sub">Free tier: up to 3 saved decisions. <button onclick="showPage('pricing')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:15px;font-family:var(--font-body);">Upgrade for unlimited →</button></div>
+  </div>
+  <div id="app">
+
+    <!-- MODE TABS -->
+    <div class="mode-switcher">
+      <button class="mode-tab active" id="tab-manual" onclick="switchMode('manual')">⚖️ Manual Mode</button>
+      <button class="mode-tab" id="tab-ai" onclick="switchMode('ai')">🤖 AI Mode</button>
+      <button class="mode-tab" id="tab-saved" onclick="switchMode('saved')">💾 Saved</button>
+    </div>
+
+    <!-- MANUAL PANEL -->
+    <div class="panel active" id="panel-manual">
+      <div class="card">
+        <div class="card-title">📋 Quick Templates</div>
+        <div class="templates-row" id="templates-row"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🎯 Decision Title</div>
+        <input type="text" id="decision-title" placeholder="e.g. Job Offer A vs Job Offer B" />
+      </div>
+      <div class="card">
+        <div class="card-title">📌 Your Options</div>
+        <div class="options-grid" id="options-container"></div>
+        <div style="display:flex;gap:10px;margin-top:10px;align-items:center;">
+          <button class="btn btn-outline btn-sm" onclick="addOption()">+ Add Option</button>
+          <span style="font-size:12px;color:var(--text-dim)">Max 6 options</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚙️ Factors & Weights
+          <button onclick="showPage('howto')" style="background:none;border:none;color:var(--text-dim);font-size:12px;cursor:pointer;font-family:var(--font-body);margin-left:auto;">❓ How do weights work?</button>
+        </div>
+        <div id="factors-container"></div>
+        <div style="display:flex;gap:10px;margin-top:14px;">
+          <button class="btn btn-outline btn-sm" onclick="addFactor()">+ Add Factor</button>
+          <button class="btn btn-outline btn-sm" onclick="clearFactors()">Clear all</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+        <button class="btn btn-accent" onclick="calculate()" style="flex:1;justify-content:center;padding:15px;">🧠 Calculate Decision Score</button>
+        <button class="btn btn-outline" onclick="saveDecision()">💾 Save</button>
+        <button class="btn btn-outline" onclick="openShare()">📤 Share</button>
+      </div>
+      <div id="results-box" style="display:none;"></div>
+    </div>
+
+    <!-- AI PANEL -->
+    <div class="panel" id="panel-ai">
+      <div class="card">
+        <div class="card-title">🤖 AI Decision Assistant</div>
+        <div class="templates-row" id="ai-templates-row"></div>
+        <textarea class="ai-textarea" id="ai-input" placeholder="Describe your situation in plain English...&#10;&#10;Example: I have 2 job offers. Company A pays ₹18 LPA but requires relocation to Bangalore. Company B pays ₹14 LPA, fully remote, better growth track. I have family in my hometown. What should I do?"></textarea>
+        <div style="margin-top:12px;">
+          <button class="btn btn-accent" style="width:100%;justify-content:center;padding:14px;" onclick="runAI()">✨ Get AI Decision</button>
+        </div>
+        <div class="loading-dots" id="ai-loading" style="display:none;"><span></span><span></span><span></span></div>
+      </div>
+      <div class="ai-result" id="ai-result"></div>
+    </div>
+
+    <!-- SAVED PANEL -->
+    <div class="panel" id="panel-saved">
+      <div class="card">
+        <div class="card-title">💾 Saved Decisions</div>
+        <div id="saved-list"></div>
+        <div id="no-saved" style="text-align:center;padding:32px;color:var(--text-dim);font-size:15px;">No saved decisions yet.</div>
+      </div>
+    </div>
+
+    <!-- PRO BANNER -->
+    <div class="pro-banner">
+      <div>
+        <h4>✨ Unlock DecideWise Pro <span class="pro-badge-pill">PRO</span></h4>
+        <p>Deep AI analysis · PDF export · Unlimited saves · Priority AI · ₹9/decision or ₹99/month</p>
+      </div>
+      <button class="btn btn-gold" onclick="showPage('pricing')">See Plans →</button>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- /page-home -->
+
+
+<!-- ═══════════════════════════ PRICING PAGE ═══════════════════════════ -->
+<div class="page" id="page-pricing">
+<div class="pricing-page">
+
+  <div class="pricing-hero">
+    <div class="label-chip">Pricing</div>
+    <h1>Simple, honest pricing</h1>
+    <p>Start free. Pay only when you need more. No hidden charges, no subscriptions you forget about.</p>
+  </div>
+
+  <!-- SUBSCRIPTION PLANS -->
+  <div class="label-chip" style="margin-bottom:16px;">Monthly / Yearly Plans</div>
+  <div class="pricing-grid" style="margin-bottom:32px;">
+
+    <div class="pricing-card">
+      <div class="plan-name">Free</div>
+      <div class="plan-desc">For occasional decisions. No signup needed.</div>
+      <div class="plan-price">₹0</div>
+      <div class="plan-period">forever free</div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Manual decision tool</li>
+        <li><span class="check">✓</span> 3 saved decisions</li>
+        <li><span class="check">✓</span> All 25+ templates</li>
+        <li><span class="check">✓</span> Basic AI mode (3/day)</li>
+        <li><span class="x">✗</span> PDF export</li>
+        <li><span class="x">✗</span> Deep AI analysis</li>
+        <li><span class="x">✗</span> Priority AI</li>
+      </ul>
+      <button class="pay-btn pay-btn-free" onclick="showPage('home');scrollToApp()">Start Free →</button>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="plan-name">Pro Monthly</div>
+      <div class="plan-desc">For people who make frequent important decisions.</div>
+      <div class="plan-price">₹99 <span>/ month</span></div>
+      <div class="plan-period">Cancel anytime · No auto-debit</div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Everything in Free</li>
+        <li><span class="check">✓</span> Unlimited saves</li>
+        <li><span class="check">✓</span> Deep AI analysis</li>
+        <li><span class="check">✓</span> PDF report export</li>
+        <li><span class="check">✓</span> Priority AI response</li>
+        <li><span class="check">✓</span> Compare history</li>
+        <li><span class="check">✓</span> Unlock code in 24hr</li>
+      </ul>
+      <button class="pay-btn pay-btn-pro" onclick="openPayment('pro_monthly','₹99/month','RAZORPAY_LINK_99')">Pay ₹99 — Upgrade Now</button>
+    </div>
+
+    <div class="pricing-card">
+      <div class="plan-name">Pro Yearly</div>
+      <div class="plan-desc">Best value. Save ₹389 vs monthly.</div>
+      <div class="plan-price">₹799 <span>/ year</span></div>
+      <div class="plan-period">~₹67/month · Best value</div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Everything in Pro Monthly</li>
+        <li><span class="check">✓</span> 12 months access</li>
+        <li><span class="check">✓</span> Team decisions (beta)</li>
+        <li><span class="check">✓</span> Early access to new features</li>
+        <li><span class="check">✓</span> Priority support</li>
+        <li><span class="check">✓</span> Unlock code in 24hr</li>
+        <li><span class="check">✓</span> Save ₹389 vs monthly</li>
+      </ul>
+      <button class="pay-btn pay-btn-gold" onclick="openPayment('pro_yearly','₹799/year','RAZORPAY_LINK_799')">Pay ₹799 — Best Value</button>
+    </div>
+
+  </div>
+
+  <!-- PAY PER DECISION -->
+  <div class="label-chip" style="margin-bottom:16px;">Pay Per Decision — No Subscription</div>
+  <div class="pay-per-use-row">
+    <div class="ppu-card">
+      <div class="ppu-price">₹9</div>
+      <div class="ppu-label">Basic Deep Analysis</div>
+      <div class="ppu-desc">One decision with extended AI analysis, pros/cons breakdown & suggested action. No subscription needed.</div>
+      <button class="btn btn-outline" style="width:100%;justify-content:center;" onclick="openPayment('single_basic','₹9 — 1 Decision','RAZORPAY_LINK_9')">Pay ₹9 for 1 Decision</button>
+    </div>
+    <div class="ppu-card">
+      <div class="ppu-price" style="color:var(--accent);">₹19</div>
+      <div class="ppu-label">Premium Deep Analysis</div>
+      <div class="ppu-desc">One decision with deep AI analysis, PDF report, team sharing, and priority processing.</div>
+      <button class="btn btn-accent" style="width:100%;justify-content:center;" onclick="openPayment('single_premium','₹19 — 1 Premium Decision','RAZORPAY_LINK_19')">Pay ₹19 for 1 Decision</button>
+    </div>
+  </div>
+
+  <!-- COMPARE TABLE -->
+  <div class="label-chip" style="margin-bottom:16px;">Full Comparison</div>
+  <div class="compare-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Free</th>
+          <th>₹9 / ₹19</th>
+          <th>Pro ₹99</th>
+          <th>Yearly ₹799</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Manual decision tool</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Templates (25+)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Basic AI mode</td><td class="limited">3/day</td><td class="yes">✓</td><td class="yes">Unlimited</td><td class="yes">Unlimited</td></tr>
+        <tr><td>Deep AI analysis</td><td class="no">✗</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>PDF report</td><td class="no">✗</td><td class="limited">₹19 only</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Save decisions</td><td class="limited">3 max</td><td class="no">✗</td><td class="yes">Unlimited</td><td class="yes">Unlimited</td></tr>
+        <tr><td>Priority AI</td><td class="no">✗</td><td class="no">✗</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Team decisions</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="yes">Beta</td></tr>
+        <tr><td>Support</td><td class="limited">Community</td><td class="limited">Email</td><td class="yes">Priority</td><td class="yes">Priority</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAYMENT NOTE -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:32px;">
+    <div class="card-title" style="margin-bottom:14px;">💳 How Payments Work</div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">
+      We accept <strong>UPI</strong> (GPay, PhonePe, Paytm), <strong>Debit/Credit cards</strong>, and <strong>Net Banking</strong> via Razorpay — India's most trusted payment gateway. Your payment is processed securely by Razorpay and never stored on our servers.
+    </p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">
+      Before payment, we collect your <strong>WhatsApp number</strong>. After you pay, we send a unique activation code to your WhatsApp (usually within 15–30 minutes). Enter it on the site to go Pro instantly. Each customer gets their own individual code — no shared codes.
+    </p>
+    <div style="background:rgba(249,202,36,0.08);border:1px solid rgba(249,202,36,0.2);border-radius:var(--radius-sm);padding:14px 16px;">
+      <p style="font-size:13px;color:var(--accent4);margin:0;">⚠️ <strong>Important:</strong> This is a personal project. DecideWise is not a registered company. Payments are accepted in good faith. Please read our <a href="#" onclick="showPage('refund')" style="color:var(--accent);">Refund Policy</a> before purchasing.</p>
+    </div>
+  </div>
+
+  <!-- UNLOCK CODE BOX -->
+  <div style="background:var(--surface);border:1px solid var(--accent);border-radius:var(--radius);padding:24px;">
+    <div class="card-title">🔑 Already Paid? Enter Your Unlock Code</div>
+    <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">After your payment is verified, you'll receive a code. Enter it below to activate Pro.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <input type="text" id="unlock-input" placeholder="DW-PM-XXXXXX-XXXX-XX" style="flex:1;min-width:200px;font-family:monospace;letter-spacing:2px;text-transform:uppercase;" oninput="this.value=this.value.toUpperCase()" />
+      <button class="btn btn-accent" onclick="unlockPro()">Unlock Pro →</button>
+    </div>
+    <p style="font-size:12px;color:var(--text-dim);margin-top:10px;">No code yet? WhatsApp us at <strong>+91 82963 72184</strong></p>
+  </div>
+
+</div>
+</div><!-- /page-pricing -->
+
+
+<!-- ═══════════════════════════ PAYMENT MODAL ═══════════════════════════ -->
+<div class="modal-overlay" id="payment-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closePayment()">×</button>
+
+    <!-- STEP 1: Collect WhatsApp number -->
+    <div id="modal-step1">
+      <h3 id="modal-plan-name">Upgrade to Pro</h3>
+      <p class="modal-sub">We'll send your activation code to your WhatsApp after payment.</p>
+      <div class="amount-badge" id="modal-amount">₹99</div>
+
+      <div style="background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.25);border-radius:var(--radius-sm);padding:14px 16px;margin:16px 0;">
+        <p style="font-size:13px;color:#25D366;font-weight:600;margin-bottom:4px;">📱 How it works</p>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.6;margin:0;">
+          1. Enter your WhatsApp number below<br/>
+          2. Click Pay — complete payment on Razorpay<br/>
+          3. We'll send your activation code to your WhatsApp<br/>
+          4. Enter code here → Pro activates instantly
+        </p>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <label style="font-size:12px;color:var(--text-muted);display:block;margin-bottom:6px;font-weight:600;">YOUR WHATSAPP NUMBER <span style="color:var(--accent2);">*</span></label>
+        <div style="display:flex;gap:8px;">
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;font-size:14px;color:var(--text-muted);white-space:nowrap;">+91</div>
+          <input type="tel" id="modal-whatsapp" placeholder="98765 43210" maxlength="10"
+            style="flex:1;" oninput="this.value=this.value.replace(/\D/g,'')" />
+        </div>
+        <div id="modal-wa-error" style="font-size:12px;color:var(--accent2);margin-top:5px;min-height:14px;"></div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <label style="font-size:12px;color:var(--text-muted);display:block;margin-bottom:6px;font-weight:600;">YOUR NAME (optional)</label>
+        <input type="text" id="modal-customer-name" placeholder="e.g. Rahul" />
+      </div>
+
+      <button class="razorpay-btn" onclick="proceedToPayment()">
+        <span>🔒</span> <span id="modal-pay-btn-text">Continue to Pay ₹99</span>
+      </button>
+      <p style="font-size:11px;color:var(--text-dim);text-align:center;margin-top:8px;">
+        Secure payment via Razorpay · UPI, GPay, PhonePe, Paytm, Cards, Net Banking
+      </p>
+    </div>
+
+    <!-- STEP 2: After payment — enter code -->
+    <div id="modal-step2" style="display:none;">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-size:44px;margin-bottom:10px;">✅</div>
+        <h3>Payment Done?</h3>
+        <p class="modal-sub">We'll send your activation code to <strong id="modal-wa-display"></strong> on WhatsApp shortly. Enter it below once received.</p>
+      </div>
+
+      <div style="background:rgba(37,211,102,0.07);border:1px solid rgba(37,211,102,0.2);border-radius:var(--radius-sm);padding:14px;margin-bottom:16px;">
+        <p style="font-size:13px;color:var(--accent3);margin:0;">
+          ⏱️ Codes are usually sent within <strong>15–30 minutes</strong> during business hours (9 AM – 9 PM IST). WhatsApp <a href="https://wa.me/918296372184" target="_blank" style="color:var(--accent);">+91 82963 72184</a> or email <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a>.
+        </p>
+      </div>
+
+      <div class="unlock-box" style="border:none;padding:0;margin:0;">
+        <h4 style="margin-bottom:10px;">🔑 Enter Your Activation Code</h4>
+        <div class="unlock-row">
+          <input type="text" id="modal-unlock-input" placeholder="DW-PM-XXXXXX-XXXX-XX"
+            style="font-family:monospace;letter-spacing:1px;text-transform:uppercase;"
+            oninput="this.value=this.value.toUpperCase()" />
+          <button class="btn btn-accent" onclick="unlockProModal()">Activate</button>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:16px;">
+        <button onclick="document.getElementById('modal-step1').style.display='block';document.getElementById('modal-step2').style.display='none';"
+          style="background:none;border:none;color:var(--text-dim);font-size:13px;cursor:pointer;font-family:var(--font-body);">
+          ← Go back / change number
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════ HOW TO USE PAGE ═══════════════════════════ -->
+<div class="page" id="page-howto">
+<div class="legal-page">
+  <div class="label-chip">Guide</div>
+  <h1>How to Use DecideWise</h1>
+  <p class="legal-meta">A complete guide to making better decisions in 60 seconds</p>
+
+  <div class="legal-nav">
+    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+    <a href="#" onclick="showPage('terms')">Terms of Service</a>
+    <a href="#" onclick="showPage('refund')">Refund Policy</a>
+  </div>
+
+  <!-- MANUAL MODE STEPS -->
+  <div class="legal-section">
+    <h2>⚖️ Manual Mode — Step by Step</h2>
+
+    <div class="how-step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Choose a Template (or start blank)</h3>
+        <p>Click any template chip like "Job vs Job" or "Buy vs Rent" to instantly load relevant factors. Templates save you time — all the important factors are pre-filled. You can always add or remove factors after loading a template.</p>
+      </div>
+    </div>
+
+    <div class="how-step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Name Your Decision</h3>
+        <p>Give your decision a clear title like "Infosys vs TCS Offer" or "Bangalore vs Hyderabad Move". This helps you identify it when you save and revisit later.</p>
+      </div>
+    </div>
+
+    <div class="how-step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Add Your Options (2 to 6)</h3>
+        <p>Add the things you're comparing. For a job decision: "Offer A — TCS" and "Offer B — Infosys". For a city move: "Bangalore", "Pune", "Hyderabad". Be specific — good names help you think clearly.</p>
+      </div>
+    </div>
+
+    <div class="how-step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Set Factors & Weights</h3>
+        <p>Factors are what matters to you. Weight is how much each factor matters <em>relative to the others</em>. See the weight guide below. Score each option 1–5 stars on every factor.</p>
+      </div>
+    </div>
+
+    <div class="how-step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>Click "Calculate Decision Score"</h3>
+        <p>The engine calculates a weighted total score for each option, shows you a comparison bar chart, explains why the winner wins, and suggests your next action.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WEIGHTS EXPLAINER -->
+  <div class="legal-section">
+    <h2>⚙️ How Weights Work — Complete Guide</h2>
+    <p>Weights tell the engine <strong>how important each factor is to you</strong>. A factor with weight 10 matters 10× more than a factor with weight 1. This is what makes your result personalised, not generic.</p>
+
+    <div class="weight-explainer">
+      <div class="weight-row">
+        <div class="weight-badge" style="color:var(--accent2);">1–3</div>
+        <div class="weight-info">
+          <h4>Low importance</h4>
+          <p>Nice to have, but not a dealbreaker. Example: office aesthetics, brand name prestige.</p>
+        </div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-badge" style="color:var(--accent4);">4–6</div>
+        <div class="weight-info">
+          <h4>Medium importance</h4>
+          <p>Matters, but you could compromise. Example: company culture, learning opportunities.</p>
+        </div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-badge" style="color:var(--accent);">7–9</div>
+        <div class="weight-info">
+          <h4>High importance</h4>
+          <p>Very important to you. Would heavily influence your decision. Example: salary, location.</p>
+        </div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-badge" style="color:var(--accent3);">10</div>
+        <div class="weight-info">
+          <h4>Deal-breaker / Must-have</h4>
+          <p>Non-negotiable. If an option scores low here, it likely loses. Example: job security if you have dependents.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="legal-highlight">
+      <p>💡 <strong>Pro tip:</strong> Don't give everything a weight of 10 — that defeats the purpose. Force yourself to rank what truly matters most. The more honest your weights, the more useful your result.</p>
+    </div>
+
+    <h3>Example: Job Decision Weights</h3>
+    <p>You have a family, need stability, and care about growth. Set weights like: Job Security → 10, Salary → 9, Growth → 8, Work-Life Balance → 7, Company Culture → 5, Location → 4, Brand Name → 2.</p>
+    <p>Now score each job 1–5 on each factor. The math handles the rest.</p>
+  </div>
+
+  <!-- AI MODE -->
+  <div class="legal-section">
+    <h2>🤖 AI Mode — How to Get the Best Results</h2>
+    <div class="how-step" style="border:none;padding:0;margin-bottom:16px;">
+      <div class="step-num" style="background:var(--accent2);">!</div>
+      <div class="step-content">
+        <h3>Be specific. Give context. Mention your priorities.</h3>
+        <p>The more detail you give, the better the AI recommendation. Don't just say "2 job offers" — say "Job A pays ₹18 LPA in Mumbai but I'm from Chennai, Job B pays ₹14 LPA remote-first. I have elderly parents and prefer stability over money."</p>
+      </div>
+    </div>
+    <div class="legal-highlight">
+      <p>📝 <strong>Good AI prompt format:</strong> Situation → Options → Your constraints/priorities → What you're confused about</p>
+    </div>
+  </div>
+
+  <!-- PRO FEATURES -->
+  <div class="legal-section">
+    <h2>✨ Pro Features Guide</h2>
+    <p><strong>How to unlock Pro:</strong> Pay on the <a href="#" onclick="showPage('pricing')" style="color:var(--accent);">Pricing page</a> → we send your unique code on WhatsApp → enter it in the "Already Paid?" box on the Pricing page. Pro is stored in your browser — if you clear browser data, just re-enter your code anytime.</p>
+    <p><strong>PDF Export:</strong> After calculating a decision, click "Export PDF" to download a clean, shareable PDF report with your scores, reasoning, and recommendation.</p>
+    <p><strong>Unlimited saves:</strong> Free tier allows 3 saved decisions. Pro removes this limit.</p>
+  </div>
+
+</div>
+</div><!-- /page-howto -->
+
+
+<!-- ═══════════════════════════ PRIVACY POLICY ═══════════════════════════ -->
+<div class="page" id="page-privacy">
+<div class="legal-page">
+  <div class="label-chip">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="legal-meta">Last updated: January 2026 · Personal project by an individual in India</p>
+
+  <div class="legal-nav">
+    <a href="#" onclick="showPage('terms')">Terms of Service</a>
+    <a href="#" onclick="showPage('refund')">Refund Policy</a>
+    <a href="#" onclick="showPage('howto')">How to Use</a>
+  </div>
+
+  <div class="legal-section">
+    <h2>1. Who We Are</h2>
+    <p>DecideWise ("we", "our", "the service") is a personal project operated by an individual based in Karnataka, India. This is not a registered company. This privacy policy explains what data we collect, how we use it, and your rights.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>2. What Data We Collect</h2>
+    <h3>Data you enter into the tool</h3>
+    <p>Decision titles, option names, factor names, scores, and AI prompts you type are processed to give you results. <strong>This data is stored only in your browser's localStorage</strong> — on your device, not on our servers.</p>
+    <h3>Payment data</h3>
+    <p>If you pay, payment is processed by <strong>Razorpay</strong> (a third-party payment gateway). We receive only your payment confirmation and the amount paid. We do not store your card numbers, UPI ID, or bank details. Razorpay's privacy policy applies to payment processing.</p>
+    <h3>AI queries</h3>
+    <p>When you use AI Mode, your text is sent to our AI engine to generate a response. We do not permanently store your AI queries on our servers.</p>
+    <h3>No account required</h3>
+    <p>We do not ask for your name, email, or phone number to use the free tier. For Pro unlock, you may voluntarily share your WhatsApp number to receive your activation code.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>3. Cookies & Tracking</h2>
+    <p>We do not use tracking cookies or analytics tools. We do not run ads. We do not sell your data. The only storage used is browser localStorage for your saved decisions.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>4. Third-Party Services</h2>
+    <ul>
+      <li><strong>Razorpay</strong> — payment processing (razorpay.com/privacy)</li>
+      <li><strong>AI Engine</strong> — powers AI decision generation and analysis</li>
+      <li><strong>Google Fonts</strong> — typography (loaded from Google's CDN)</li>
+    </ul>
+    <p>Each of these services has their own privacy policy which applies to the data they process.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>5. Data Security</h2>
+    <p>Since decision data is stored in your browser (localStorage), it is as secure as your device. We recommend not entering extremely sensitive personal or financial information into any web tool.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>6. Your Rights</h2>
+    <p>You can delete all your saved data at any time by clearing browser localStorage or using the "Delete" option in the Saved Decisions panel. For any data concerns, email us at <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a> or WhatsApp <a href="https://wa.me/918296372184" target="_blank" style="color:var(--accent);">+91 82963 72184</a>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>7. Children's Privacy</h2>
+    <p>DecideWise is not intended for users under 13. We do not knowingly collect data from children.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>8. Changes to This Policy</h2>
+    <p>We may update this policy. Continued use of the service after changes constitutes acceptance.</p>
+  </div>
+
+</div>
+</div><!-- /page-privacy -->
+
+
+<!-- ═══════════════════════════ TERMS OF SERVICE ═══════════════════════════ -->
+<div class="page" id="page-terms">
+<div class="legal-page">
+  <div class="label-chip">Legal</div>
+  <h1>Terms of Service &amp; Disclaimer</h1>
+  <p class="legal-meta">Last updated: January 2026</p>
+
+  <div class="legal-nav">
+    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+    <a href="#" onclick="showPage('refund')">Refund Policy</a>
+    <a href="#" onclick="showPage('howto')">How to Use</a>
+  </div>
+
+  <div class="legal-warning">
+    <p>⚠️ <strong>Important Disclaimer:</strong> DecideWise is a decision-support tool. It does not provide financial, legal, medical, or professional advice. All decisions remain yours alone. The tool's output is for informational and guidance purposes only.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>1. Acceptance of Terms</h2>
+    <p>By using DecideWise, you agree to these Terms of Service. If you do not agree, please stop using the service. These terms may be updated at any time without prior notice.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>2. Nature of the Service</h2>
+    <p>DecideWise is a personal project, not a registered business or professional service. It is a web-based tool designed to help individuals structure their thinking around decisions. It is <strong>not a substitute for professional advice</strong> of any kind.</p>
+    <ul>
+      <li>Not financial advice — consult a SEBI-registered advisor for investment decisions</li>
+      <li>Not legal advice — consult a qualified lawyer for legal matters</li>
+      <li>Not medical advice — consult a licensed doctor for health decisions</li>
+      <li>Not career counselling — outputs are algorithmic, not personalised professional guidance</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>3. AI-Generated Content Disclaimer</h2>
+    <p>The AI Mode uses a large language model to generate recommendations. AI outputs may be:</p>
+    <ul>
+      <li>Incomplete, inaccurate, or biased based on how you phrase your situation</li>
+      <li>Based on general patterns, not your specific context</li>
+      <li>Different each time you ask the same question</li>
+    </ul>
+    <div class="legal-highlight">
+      <p>💡 Always use AI recommendations as <strong>one input</strong> among many — not as a final verdict. Cross-check important decisions with trusted people in your life.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <h2>4. User Responsibilities</h2>
+    <p>You agree to:</p>
+    <ul>
+      <li>Use the service for lawful purposes only</li>
+      <li>Not input other people's personal information without their consent</li>
+      <li>Not attempt to reverse-engineer, copy, or misuse the service</li>
+      <li>Take full responsibility for decisions made using this tool</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>5. Limitation of Liability</h2>
+    <p>DecideWise and its operator shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use of this service or decisions made based on its output. The service is provided "as is" without warranties of any kind.</p>
+    <p>We are not responsible for:</p>
+    <ul>
+      <li>Outcomes of decisions made using the tool</li>
+      <li>Data loss due to browser clearing or device issues</li>
+      <li>Temporary unavailability of the AI mode</li>
+      <li>Inaccuracies in AI-generated content</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>6. Intellectual Property</h2>
+    <p>The DecideWise name, design, and code are the property of the operator. You may not copy, redistribute, or create derivative works without written permission.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>7. Governing Law</h2>
+    <p>These terms are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of courts in Karnataka, India.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>8. Contact</h2>
+    <p>For any questions regarding these terms, email <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a> or WhatsApp <a href="https://wa.me/918296372184" target="_blank" style="color:var(--accent);">+91 82963 72184</a></p>
+  </div>
+
+</div>
+</div><!-- /page-terms -->
+
+
+<!-- ═══════════════════════════ REFUND POLICY ═══════════════════════════ -->
+<div class="page" id="page-refund">
+<div class="legal-page">
+  <div class="label-chip">Legal</div>
+  <h1>Refund Policy</h1>
+  <p class="legal-meta">Last updated: January 2026 · Please read carefully before purchasing</p>
+
+  <div class="legal-nav">
+    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+    <a href="#" onclick="showPage('terms')">Terms of Service</a>
+    <a href="#" onclick="showPage('howto')">How to Use</a>
+  </div>
+
+  <div class="legal-warning">
+    <p>⚠️ <strong>Read before paying:</strong> DecideWise is a personal project, not a registered company. Refunds are handled manually and on a goodwill basis. Please review the free tier thoroughly before upgrading.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>1. Our Refund Commitment</h2>
+    <p>We want you to be satisfied. If something goes wrong on our end, we will make it right. Here is our policy in plain language:</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>2. When You Will Get a Full Refund</h2>
+    <ul>
+      <li>You paid but never received your activation code on WhatsApp within 24 hours</li>
+      <li>Your activation code does not work and we cannot fix it within 24 hours</li>
+      <li>You were charged more than the stated amount (payment error)</li>
+      <li>Duplicate payment (paid twice for the same plan)</li>
+    </ul>
+    <div class="legal-highlight">
+      <p>✅ In all the above cases, contact us within <strong>7 days</strong> of payment. We will refund the full amount via the same payment method.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <h2>3. When Refunds Are Not Applicable</h2>
+    <ul>
+      <li>You changed your mind after receiving and using the unlock code</li>
+      <li>You did not read the plan features before purchasing</li>
+      <li>You are dissatisfied with the AI's recommendations (AI output quality is subjective)</li>
+      <li>You cleared your browser data and lost Pro status (re-enter your code to restore)</li>
+      <li>Requests made after 7 days of purchase</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>4. Pay-Per-Decision (₹9 / ₹19)</h2>
+    <p>For one-time decision payments, refunds are only issued if the AI mode failed to return any result at all (technical failure). Dissatisfaction with the AI's analysis does not qualify for refund.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>5. How to Request a Refund</h2>
+    <p>Email <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a> or WhatsApp <a href="https://wa.me/918296372184" target="_blank" style="color:var(--accent);">+91 82963 72184</a> with:</p>
+    <ul>
+      <li>Your Razorpay payment ID (found in payment confirmation)</li>
+      <li>Amount paid and date</li>
+      <li>Reason for refund request</li>
+    </ul>
+    <p>We will respond within 2 business days. Approved refunds are processed within 5–7 business days via Razorpay back to your original payment method.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>6. RBI & Razorpay Compliance</h2>
+    <p>All payments are processed through Razorpay, which is a PCI-DSS compliant payment gateway regulated under RBI guidelines. We comply with applicable Indian payment regulations. This service does not store any card or UPI credentials.</p>
+    <p>For UPI-related disputes, you may also raise a dispute through your bank's UPI dispute mechanism or the NPCI UPI complaint portal at <strong>npci.org.in</strong>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>7. No Auto-Renewal</h2>
+    <p>DecideWise subscriptions are <strong>not auto-renewing</strong>. You manually pay each month/year. There is no risk of unexpected charges. Your Pro access simply expires at the end of the paid period and reverts to Free.</p>
+  </div>
+
+</div>
+</div><!-- /page-refund -->
+
+<!-- ═══════════════════════════ CONTACT PAGE ═══════════════════════════ -->
+<div class="page" id="page-contact">
+<div class="legal-page">
+  <div class="label-chip">Support</div>
+  <h1>Contact & Help</h1>
+  <p class="legal-meta">We're here to help. Reach us on any of the channels below.</p>
+
+  <div class="legal-nav">
+    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+    <a href="#" onclick="showPage('terms')">Terms of Service</a>
+    <a href="#" onclick="showPage('refund')">Refund Policy</a>
+  </div>
+
+  <!-- CONTACT CARDS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:40px;">
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:36px;margin-bottom:12px;">📧</div>
+      <h3 style="font-family:var(--font-head);font-size:17px;margin-bottom:8px;">Email Support</h3>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;line-height:1.6;">For any questions, issues, or feedback. We reply within 24 hours.</p>
+      <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-align:center;transition:all 0.2s;" onmouseover="this.style.borderColor='#25D366'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:36px;margin-bottom:12px;">💬</div>
+      <h3 style="font-family:var(--font-head);font-size:17px;margin-bottom:8px;">WhatsApp</h3>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;line-height:1.6;">Fastest response. For payment help, activation codes, or urgent issues.</p>
+      <a href="https://wa.me/918296372184" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:10px 20px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;text-decoration:none;">
+        💬 +91 82963 72184
+      </a>
+    </div>
+
+  </div>
+
+  <!-- COMMON ISSUES -->
+  <div class="legal-section">
+    <h2>🔧 Common Issues & Quick Fixes</h2>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px 20px;">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);">❓ I paid but haven't received my activation code</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Codes are sent within 15–30 minutes during business hours (9 AM – 9 PM IST). If it's been over 1 hour, WhatsApp us at <a href="https://wa.me/918296372184" target="_blank" style="color:var(--accent);">+91 82963 72184</a> or email <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a> with your payment screenshot.</p>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px 20px;">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);">❓ My activation code is not working</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Make sure you're entering the code exactly as sent — all uppercase, with dashes. If it still doesn't work, contact us with your code and we'll fix it immediately.</p>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px 20px;">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);">❓ I cleared my browser / switched device and lost Pro access</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Your Pro access is stored in your browser. Just re-enter your activation code on the <a href="#" onclick="showPage('pricing')" style="color:var(--accent);">Pricing page</a> → "Already Paid?" section. Your code is permanent until expiry.</p>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px 20px;">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);">❓ The AI mode is not responding / showing an error</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Try refreshing the page and trying again. If the issue persists, email us at <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a> and we'll look into it.</p>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px 20px;">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);">❓ The website is not loading / something looks broken</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Try a hard refresh (Ctrl+Shift+R on Windows, Cmd+Shift+R on Mac). If the issue continues, email <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a> with a screenshot of what you see.</p>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px 20px;">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);">❓ I want a refund</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">Please read our <a href="#" onclick="showPage('refund')" style="color:var(--accent);">Refund Policy</a> first. If eligible, email <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a> with your Razorpay payment ID.</p>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px 20px;">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);">💡 I have a feature suggestion</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;">We'd love to hear it! Email your idea to <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a> — we read every message.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESPONSE TIME -->
+  <div class="legal-highlight">
+    <p>⏱️ <strong>Response times:</strong> WhatsApp — usually within 2 hours (9 AM–9 PM IST) · Email — within 24 hours · Weekends may be slightly slower.</p>
+  </div>
+
+</div>
+</div><!-- /page-contact -->
+
+
+<!-- ═══════════════════════════ SHARE MODAL ═══════════════════════════ -->
+<div class="modal-overlay" id="share-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeShare()">×</button>
+    <h3>📤 Share Your Decision</h3>
+    <p class="modal-sub">Share your decision card and get input from others.</p>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;text-align:center;margin-bottom:16px;" id="share-preview">
+      <div style="font-family:var(--font-head);font-size:13px;color:var(--accent);margin-bottom:8px;">🧠 DecideWise</div>
+      <div id="share-content"></div>
+      <div style="font-size:11px;color:var(--text-dim);margin-top:8px;">decidewise.app</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn btn-outline" style="flex:1;justify-content:center;" onclick="copyLink()">🔗 Copy Link</button>
+      <button class="btn btn-outline" style="flex:1;justify-content:center;" onclick="shareWhatsApp()">💬 WhatsApp</button>
+      <button class="btn btn-outline" style="flex:1;justify-content:center;" onclick="shareTwitter()">🐦 Twitter/X</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ ADMIN MODAL ═══════════════════════════ -->
+<div class="modal-overlay" id="admin-modal">
+  <div class="modal" style="max-width:680px;">
+    <button class="modal-close" onclick="closeAdmin()">×</button>
+
+    <!-- LOGIN SCREEN -->
+    <div id="admin-login-screen">
+      <div style="text-align:center;margin-bottom:24px;">
+        <div style="font-size:40px;margin-bottom:10px;">🔐</div>
+        <h3>Admin Panel</h3>
+        <p class="modal-sub">Enter your admin password to manage codes</p>
+      </div>
+      <input type="password" id="admin-pwd-input" placeholder="Admin password" style="margin-bottom:10px;" onkeydown="if(event.key==='Enter')checkAdminPassword()" />
+      <div id="admin-pwd-error" style="color:var(--accent2);font-size:13px;margin-bottom:10px;min-height:16px;"></div>
+      <button class="btn btn-accent" style="width:100%;justify-content:center;padding:13px;" onclick="checkAdminPassword()">Unlock Admin →</button>
+    </div>
+
+    <!-- MAIN ADMIN PANEL -->
+    <div id="admin-main" style="display:none;">
+      <h3 style="margin-bottom:4px;">🔑 Code Manager</h3>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">Generate unique codes per customer. Cancel individual users instantly.</p>
+
+      <!-- STATS -->
+      <div id="admin-stats" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;"></div>
+
+      <!-- GENERATE NEW CODE -->
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px;margin-bottom:20px;">
+        <div style="font-size:13px;font-weight:700;margin-bottom:14px;color:var(--accent);">➕ Generate New Code</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+          <select id="admin-plan-select" style="flex:1;min-width:160px;">
+            <option value="">Select plan…</option>
+            <option value="pro_monthly">Pro Monthly — ₹99</option>
+            <option value="pro_yearly">Pro Yearly — ₹799</option>
+            <option value="single_basic">Basic 1 Decision — ₹9</option>
+            <option value="single_premium">Premium Analysis — ₹19 (1 decision)</option>
+          </select>
+          <input type="text" id="admin-customer-name" placeholder="Customer name (optional)" style="flex:1;min-width:140px;" />
+          <input type="text" id="admin-payment-ref" placeholder="Razorpay payment ID (optional)" style="flex:1;min-width:180px;" />
+        </div>
+        <button class="btn btn-accent" onclick="adminGenerateCode()" style="margin-bottom:12px;">Generate Code</button>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <input type="text" id="admin-generated-code" placeholder="Generated code appears here…" readonly style="flex:1;font-family:monospace;font-size:15px;font-weight:700;color:var(--accent3);background:var(--bg);" />
+          <button class="btn btn-outline btn-sm" onclick="adminCopyGenerated()">📋 Copy</button>
+          <button class="btn btn-sm" style="background:#25D366;color:#fff;" onclick="adminWhatsAppCode()">💬 Send WhatsApp</button>
+        </div>
+      </div>
+
+      <!-- PENDING PAYMENTS -->
+      <div id="admin-pending-section"></div>
+
+      <!-- CODE LIST -->
+      <div style="font-size:13px;font-weight:700;color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">All Codes</div>
+      <div id="admin-code-list" style="max-height:340px;overflow-y:auto;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">DecideWise</div>
+      <p>Make the right decision in 60 seconds. Structured. Scored. Clear.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--text-dim);">A personal project · Not a registered company</p>
+      <div class="footer-disclaimer">
+        DecideWise is a decision-support tool, not professional advice. All decisions are your own responsibility. Payments processed securely via Razorpay. By using this service you agree to our Terms of Service.
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Product</h4>
+      <a href="#" onclick="showPage('home');scrollToApp()">Try Free</a>
+      <a href="#" onclick="showPage('pricing')">Pricing</a>
+      <a href="#" onclick="showPage('howto')">How to Use</a>
+      <a href="#" onclick="showPage('contact')">Contact & Help</a>
+    </div>
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+      <a href="#" onclick="showPage('terms')">Terms of Service</a>
+      <a href="#" onclick="showPage('refund')">Refund Policy</a>
+      <a href="#" onclick="openAdmin()" style="color:var(--text-dim);font-size:11px;margin-top:8px;">⚙ Admin</a>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="mailto:gurucharan.k@zohomail.in" style="color:var(--accent);">gurucharan.k@zohomail.in</a>
+      <a href="https://wa.me/918296372184" target="_blank">💬 WhatsApp</a>
+      <a href="#" onclick="showPage('contact')">Help & FAQ</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 DecideWise · Karnataka, India</p>
+    <p>Payments processed securely via <strong>Razorpay</strong></p>
+  </div>
+</footer>
+
+<!-- FLOATING HELP BUTTON -->
+<button onclick="showPage('contact');window.scrollTo({top:0,behavior:'smooth'})"
+  style="position:fixed;bottom:28px;right:28px;z-index:90;
+    background:linear-gradient(135deg,var(--accent),#8b5cf6);
+    color:#fff;border:none;border-radius:100px;padding:12px 20px;
+    font-family:var(--font-body);font-size:14px;font-weight:600;
+    cursor:pointer;box-shadow:0 6px 24px rgba(108,99,255,0.4);
+    display:flex;align-items:center;gap:8px;transition:all 0.25s;"
+  onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(108,99,255,0.55)'"
+  onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(108,99,255,0.4)'"
+  id="help-fab">
+  💬 Help
+</button>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════
+//  CONFIG — Update these when you have them
+// ══════════════════════════════════════
+const CONFIG = {
+  upiId: '8296372184@ybl',
+  whatsapp: '+918296372184',
+  razorpayLinks: {
+    pro_monthly:    'https://rzp.io/rzp/JxmBhB1',
+    pro_yearly:     'https://rzp.io/rzp/4Qg7UNPr',
+    single_basic:   'https://rzp.io/rzp/EO33zor3',
+    single_premium: 'https://rzp.io/rzp/N9NLiuw0',
+  },
+  planDetails: {
+    pro_monthly:    { label:'Pro Monthly',                   amount:99,  duration:'30 days', type:'subscription', days:30  },
+    pro_yearly:     { label:'Pro Yearly',                    amount:799, duration:'365 days',type:'subscription', days:365 },
+    single_basic:   { label:'Basic Analysis (1 Decision)',   amount:9,   duration:'1 use',   type:'single',       uses:1   },
+    single_premium: { label:'Premium Analysis (1 Decision)', amount:19,  duration:'1 use',   type:'single',       uses:1   },
+  },
+  // ── ADMIN PASSWORD ──────────────────────────────────────────
+  // Change this to something only you know
+  adminPassword: 'decidewise2026',
+};
+
+// ══════════════════════════════════════════════════════════════
+//  CODE ENGINE — Unique per-user codes with expiry & revocation
+//  Format: DW-[PLAN]-[EXPIRY_DAYS_FROM_EPOCH]-[RANDOM]-[CHECKSUM]
+//  Example: DW-PM-738291-X4K2-AB
+//  All codes stored in localStorage under 'dw_code_registry'
+// ══════════════════════════════════════════════════════════════
+
+// ── CODE GENERATION (you use this in admin panel) ──────────────
+function generateCode(planKey) {
+  const plan   = CONFIG.planDetails[planKey];
+  const prefix = { pro_monthly:'PM', pro_yearly:'PY', single_basic:'SB', single_premium:'SP' }[planKey] || 'PM';
+  const now    = Math.floor(Date.now() / 86400000); // days since epoch
+  const expiry = plan.type === 'subscription' ? now + plan.days : now + 3650; // single codes valid 10yr
+  const rand   = Math.random().toString(36).substring(2,6).toUpperCase();
+  const uses   = plan.type === 'single' ? plan.uses : 0; // 0 = subscription (unlimited)
+  const raw    = `DW-${prefix}-${expiry}-${rand}`;
+  // Simple checksum: sum of char codes mod 97, formatted as 2-char hex
+  const check  = [...raw].reduce((a,c)=>a+c.charCodeAt(0),0) % 97;
+  const checkHex = check.toString(16).toUpperCase().padStart(2,'0');
+  return `${raw}-${checkHex}`;
+}
+
+// ── CODE REGISTRY (stored in localStorage, keyed by code) ──────
+function getRegistry() {
+  return JSON.parse(localStorage.getItem('dw_code_registry') || '{}');
+}
+function saveRegistry(reg) {
+  localStorage.setItem('dw_code_registry', JSON.stringify(reg));
+}
+
+// ── ADMIN: Issue a code (call from admin panel) ─────────────────
+function issueCode(planKey, customerName, paymentRef) {
+  const code = generateCode(planKey);
+  const plan = CONFIG.planDetails[planKey];
+  const reg  = getRegistry();
+  reg[code]  = {
+    code, planKey,
+    planLabel:    plan.label,
+    planType:     plan.type,
+    customerName: customerName || 'Customer',
+    paymentRef:   paymentRef   || '',
+    issuedAt:     new Date().toISOString(),
+    usesLeft:     plan.type === 'single' ? plan.uses : null,
+    expiryDays:   plan.type === 'subscription' ? plan.days : null,
+    activatedAt:  null,
+    expiresAt:    null,
+    revoked:      false,
+    revokedAt:    null,
+  };
+  saveRegistry(reg);
+  return code;
+}
+
+// ── ADMIN: Revoke a code (instantly cancels that user) ──────────
+function revokeCode(code) {
+  const reg = getRegistry();
+  if(!reg[code]) return false;
+  reg[code].revoked   = true;
+  reg[code].revokedAt = new Date().toISOString();
+  saveRegistry(reg);
+  return true;
+}
+
+// ── ADMIN: Reinstate a revoked code ────────────────────────────
+function reinstateCode(code) {
+  const reg = getRegistry();
+  if(!reg[code]) return false;
+  reg[code].revoked   = false;
+  reg[code].revokedAt = null;
+  saveRegistry(reg);
+  return true;
+}
+
+// ── USER: Validate & activate a code ───────────────────────────
+function validateCode(code) {
+  code = code.trim().toUpperCase();
+  const reg = getRegistry();
+  const entry = reg[code];
+  if(!entry) return { valid:false, reason:'Code not found. Check and try again.' };
+  if(entry.revoked) return { valid:false, reason:'This code has been cancelled. Contact support.' };
+
+  // Verify checksum
+  const parts   = code.split('-');
+  const checkPart = parts.pop();
+  const raw     = parts.join('-');
+  const expected = ([...raw].reduce((a,c)=>a+c.charCodeAt(0),0) % 97).toString(16).toUpperCase().padStart(2,'0');
+  if(checkPart !== expected) return { valid:false, reason:'Invalid code format.' };
+
+  // Check expiry from code itself (days since epoch)
+  const expiryDay = parseInt(parts[2]);
+  const todayDay  = Math.floor(Date.now() / 86400000);
+  if(expiryDay < todayDay) return { valid:false, reason:'This code has expired.' };
+
+  // Check single-use credits
+  if(entry.planType === 'single' && entry.usesLeft !== null && entry.usesLeft <= 0) {
+    return { valid:false, reason:'All uses for this code are exhausted.' };
+  }
+
+  return { valid:true, entry };
+}
+
+// ── PRO STATE ───────────────────────────────────────────────────
+let isPro = false;
+let proType = null;
+let singleUsesLeft = 0;
+let activeCode = null;
+
+function checkPro() {
+  const stored = JSON.parse(localStorage.getItem('dw_pro_state') || 'null');
+  if(!stored || !stored.code) { isPro=false; updateProUI(); return; }
+
+  // Re-validate code against registry (catches revocations)
+  const result = validateCode(stored.code);
+  if(!result.valid) {
+    localStorage.removeItem('dw_pro_state');
+    isPro=false; proType=null; updateProUI(); return;
+  }
+
+  activeCode = stored.code;
+  if(stored.planType === 'subscription') {
+    isPro      = new Date(stored.expiresAt) > new Date();
+    proType    = isPro ? 'subscription' : null;
+    if(!isPro) localStorage.removeItem('dw_pro_state');
+  } else {
+    singleUsesLeft = result.entry.usesLeft || 0;
+    isPro   = singleUsesLeft > 0;
+    proType = isPro ? 'single' : null;
+  }
+  updateProUI();
+}
+
+function applyCode(code) {
+  const result = validateCode(code);
+  if(!result.valid) { showToast('❌ ' + result.reason); return false; }
+
+  const entry = result.entry;
+  const reg   = getRegistry();
+
+  // Mark activated in registry
+  if(!reg[code].activatedAt) {
+    reg[code].activatedAt = new Date().toISOString();
+    if(entry.planType === 'subscription') {
+      const exp = new Date();
+      exp.setDate(exp.getDate() + entry.expiryDays);
+      reg[code].expiresAt = exp.toISOString();
+    }
+    saveRegistry(reg);
+  }
+
+  const expiresAt = reg[code].expiresAt;
+  const state = {
+    code,
+    planKey:   entry.planKey,
+    planType:  entry.planType,
+    planLabel: entry.planLabel,
+    expiresAt,
+    activatedAt: new Date().toISOString(),
+  };
+  localStorage.setItem('dw_pro_state', JSON.stringify(state));
+  activeCode = code;
+  isPro = true;
+  proType = entry.planType;
+  singleUsesLeft = reg[code].usesLeft || 0;
+  updateProUI();
+  return true;
+}
+
+function useSingleCredit() {
+  if(!activeCode || proType !== 'single') return;
+  const reg = getRegistry();
+  if(reg[activeCode] && reg[activeCode].usesLeft > 0) {
+    reg[activeCode].usesLeft--;
+    singleUsesLeft = reg[activeCode].usesLeft;
+    if(reg[activeCode].usesLeft <= 0) { isPro=false; proType=null; }
+    saveRegistry(reg);
+    updateProUI();
+  }
+}
+
+function updateProUI() {
+  const upgradeBtn = document.getElementById('upgrade-nav-btn');
+  const proBtn     = document.getElementById('pro-status-btn');
+  if(isPro) {
+    upgradeBtn.style.display = 'none';
+    proBtn.style.display     = 'block';
+    if(proType === 'single') {
+      proBtn.textContent = `⚡ ${singleUsesLeft} use${singleUsesLeft!==1?'s':''} left`;
+    } else {
+      const stored = JSON.parse(localStorage.getItem('dw_pro_state') || '{}');
+      const days   = stored.expiresAt ? Math.ceil((new Date(stored.expiresAt)-new Date())/86400000) : '?';
+      proBtn.textContent = `✨ Pro · ${days}d left`;
+    }
+    proBtn.className = 'nav-btn active';
+  } else {
+    upgradeBtn.style.display = 'block';
+    proBtn.style.display     = 'none';
+  }
+}
+
+function unlockPro() {
+  const code = document.getElementById('unlock-input')?.value?.trim().toUpperCase();
+  if(!code) return showToast('Enter your unlock code first');
+  if(applyCode(code)) { showToast('🎉 Pro activated! Welcome to DecideWise Pro!'); showPage('home'); scrollToApp(); }
+}
+function unlockProModal() {
+  const code = document.getElementById('modal-unlock-input')?.value?.trim().toUpperCase();
+  if(!code) return showToast('Enter your unlock code first');
+  if(applyCode(code)) { closePayment(); showToast('🎉 Pro activated!'); showPage('home'); scrollToApp(); }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  ADMIN PANEL FUNCTIONS
+// ══════════════════════════════════════════════════════════════
+let adminUnlocked = false;
+
+function openAdmin() {
+  document.getElementById('admin-modal').classList.add('show');
+  if(adminUnlocked) renderAdminPanel();
+}
+function closeAdmin() { document.getElementById('admin-modal').classList.remove('show'); }
+
+function checkAdminPassword() {
+  const pwd = document.getElementById('admin-pwd-input').value;
+  if(pwd === CONFIG.adminPassword) {
+    adminUnlocked = true;
+    document.getElementById('admin-login-screen').style.display = 'none';
+    document.getElementById('admin-main').style.display = 'block';
+    renderAdminPanel();
+  } else {
+    document.getElementById('admin-pwd-error').textContent = '❌ Wrong password';
+  }
+}
+
+function renderAdminPanel() {
+  const reg  = getRegistry();
+  const list = Object.values(reg).sort((a,b)=> new Date(b.issuedAt)-new Date(a.issuedAt));
+
+  // Stats
+  const total    = list.length;
+  const active   = list.filter(c => !c.revoked && c.activatedAt && (c.planType!=='subscription' || new Date(c.expiresAt)>new Date())).length;
+  const revoked  = list.filter(c => c.revoked).length;
+  const unissued = list.filter(c => !c.activatedAt && !c.revoked).length;
+
+  // Show pending (paid but code not sent yet)
+  const pending = JSON.parse(localStorage.getItem('dw_pending_payments') || '[]');
+  // Filter last 24hrs
+  const recentPending = pending.filter(p => Date.now() - p.timestamp < 86400000);
+
+  document.getElementById('admin-stats').innerHTML = `
+    <div class="astat"><div class="astat-n">${total}</div><div class="astat-l">Total Codes</div></div>
+    <div class="astat"><div class="astat-n" style="color:var(--accent3)">${active}</div><div class="astat-l">Active</div></div>
+    <div class="astat"><div class="astat-n" style="color:var(--accent4)">${unissued}</div><div class="astat-l">Unused</div></div>
+    <div class="astat"><div class="astat-n" style="color:var(--accent2)">${revoked}</div><div class="astat-l">Cancelled</div></div>
+  `;
+
+  // Pending payments section
+  const pendingHtml = recentPending.length === 0 ? '' : `
+    <div style="background:rgba(249,202,36,0.07);border:1px solid rgba(249,202,36,0.25);border-radius:var(--radius-sm);padding:16px;margin-bottom:20px;">
+      <div style="font-size:13px;font-weight:700;color:var(--accent4);margin-bottom:12px;">⏳ Pending — Paid but code not sent yet (last 24 hrs)</div>
+      ${recentPending.map(p => `
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);">
+          <div>
+            <div style="font-size:14px;font-weight:600;">${p.name} · <a href="https://wa.me/${p.whatsapp.replace('+','')}" target="_blank" style="color:#25D366;">${p.whatsapp}</a></div>
+            <div style="font-size:12px;color:var(--text-dim);">${p.planLabel} · ₹${p.amount} · ${p.time}</div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <select id="pending-plan-${p.timestamp}" style="font-size:12px;padding:5px 8px;">
+              <option value="pro_monthly" ${p.planKey==='pro_monthly'?'selected':''}>Pro Monthly ₹99</option>
+              <option value="pro_yearly" ${p.planKey==='pro_yearly'?'selected':''}>Pro Yearly ₹799</option>
+              <option value="single_basic" ${p.planKey==='single_basic'?'selected':''}>Basic ₹9</option>
+              <option value="single_premium" ${p.planKey==='single_premium'?'selected':''}>Premium ₹19</option>
+            </select>
+            <button onclick="adminGenerateAndSend('${p.whatsapp}','${p.name}',document.getElementById('pending-plan-${p.timestamp}').value,${p.timestamp})"
+              style="background:#25D366;color:#fff;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-family:var(--font-body);font-weight:600;">
+              Generate &amp; Send WhatsApp
+            </button>
+          </div>
+        </div>
+      `).join('')}
+    </div>`;
+  document.getElementById('admin-pending-section').innerHTML = pendingHtml;
+
+  // Code list
+  document.getElementById('admin-code-list').innerHTML = list.length === 0
+    ? '<div style="text-align:center;padding:24px;color:var(--text-dim);">No codes yet. Generate one above.</div>'
+    : list.map(c => {
+        const statusColor = c.revoked ? 'var(--accent2)' : c.activatedAt ? 'var(--accent3)' : 'var(--accent4)';
+        const statusText  = c.revoked ? 'Cancelled' : c.activatedAt ? 'Active' : 'Not used yet';
+        const expText = c.planType === 'subscription' && c.expiresAt
+          ? `Expires: ${new Date(c.expiresAt).toLocaleDateString('en-IN')}`
+          : c.planType === 'single' ? `${c.usesLeft ?? '?'} uses left` : 'Pending activation';
+        return `
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+            <div>
+              <div style="font-family:monospace;font-size:14px;color:var(--accent);font-weight:700;margin-bottom:4px;">${c.code}</div>
+              <div style="font-size:12px;color:var(--text-muted);">${c.customerName} · ${c.planLabel}</div>
+              <div style="font-size:12px;color:var(--text-dim);">${expText} · Issued: ${new Date(c.issuedAt).toLocaleDateString('en-IN')}</div>
+              ${c.paymentRef ? `<div style="font-size:11px;color:var(--text-dim);">Razorpay: ${c.paymentRef}</div>` : ''}
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+              <span style="font-size:11px;font-weight:700;color:${statusColor};background:rgba(255,255,255,0.05);padding:3px 10px;border-radius:100px;">${statusText}</span>
+              <button onclick="adminCopyCode('${c.code}')" style="background:none;border:1px solid var(--border);color:var(--text-muted);padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-family:var(--font-body)">📋 Copy</button>
+              ${!c.revoked
+                ? `<button onclick="adminRevoke('${c.code}')" style="background:none;border:1px solid var(--accent2);color:var(--accent2);padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-family:var(--font-body)">Cancel</button>`
+                : `<button onclick="adminReinstate('${c.code}')" style="background:none;border:1px solid var(--accent3);color:var(--accent3);padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-family:var(--font-body)">Restore</button>`
+              }
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+}
+
+function adminGenerateCode() {
+  const planKey  = document.getElementById('admin-plan-select').value;
+  const custName = document.getElementById('admin-customer-name').value.trim() || 'Customer';
+  const payRef   = document.getElementById('admin-payment-ref').value.trim();
+  if(!planKey) return showToast('Select a plan first');
+  const code = issueCode(planKey, custName, payRef);
+  document.getElementById('admin-generated-code').value = code;
+  document.getElementById('admin-customer-name').value = '';
+  document.getElementById('admin-payment-ref').value = '';
+  renderAdminPanel();
+  showToast('✅ Code generated! Copy and send to customer.');
+}
+
+function adminCopyCode(code) {
+  navigator.clipboard?.writeText(code).then(()=>showToast('📋 Code copied: ' + code));
+}
+
+function adminRevoke(code) {
+  if(!confirm(`Cancel code ${code}?
+
+This user will lose Pro access immediately.`)) return;
+  revokeCode(code);
+  renderAdminPanel();
+  showToast('🚫 Code cancelled. User will lose access on next page load.');
+}
+
+function adminReinstate(code) {
+  reinstateCode(code);
+  renderAdminPanel();
+  showToast('✅ Code restored. User can use Pro again.');
+}
+
+function adminCopyGenerated() {
+  const code = document.getElementById('admin-generated-code').value;
+  if(!code) return showToast('Generate a code first');
+  navigator.clipboard?.writeText(code).then(()=>showToast('📋 Copied: ' + code));
+}
+
+function adminWhatsAppCode() {
+  const code = document.getElementById('admin-generated-code').value;
+  if(!code) return showToast('Generate a code first');
+  const msg = `Hi! Here is your DecideWise Pro activation code:%0A%0A*${code}*%0A%0ATo activate:%0A1. Go to decidewise.app%0A2. Click Pricing → scroll to "Already Paid?"%0A3. Enter the code above → click Activate%0A%0AEnjoy Pro! 🎉`;
+  window.open('https://wa.me/?text=' + msg, '_blank');
+}
+
+// One-click: generate code for a pending customer and open WhatsApp
+function adminGenerateAndSend(waNum, name, planKey, timestamp) {
+  const code = issueCode(planKey, name, '');
+  const cleanNum = waNum.replace('+','');
+  const msg = `Hi ${name}! Here is your DecideWise Pro activation code:%0A%0A*${code}*%0A%0ATo activate:%0A1. Go to decidewise.app%0A2. Click Pricing → scroll to "Already Paid?"%0A3. Enter the code above → click Activate%0A%0AEnjoy Pro! 🎉`;
+  window.open('https://wa.me/' + cleanNum + '?text=' + msg, '_blank');
+  // Remove from pending
+  const pending = JSON.parse(localStorage.getItem('dw_pending_payments') || '[]');
+  const updated = pending.filter(p => p.timestamp !== timestamp);
+  localStorage.setItem('dw_pending_payments', JSON.stringify(updated));
+  renderAdminPanel();
+  showToast('✅ Code generated & WhatsApp opened!');
+}
+
+// ══════════════════════════════════════
+//  PAGE NAVIGATION
+// ══════════════════════════════════════
+function showPage(p) {
+  document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));
+  const pageMap = {home:'page-home',pricing:'page-pricing',howto:'page-howto',privacy:'page-privacy',terms:'page-terms',refund:'page-refund',contact:'page-contact'};
+  const target = document.getElementById(pageMap[p] || 'page-home');
+  if(target) target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ══════════════════════════════════════
+//  PAYMENT MODAL
+// ══════════════════════════════════════
+let currentPaymentPlan = null;
+let currentRazorpayLink = null;
+function openPayment(planKey, label, rzpLink) {
+  currentPaymentPlan = planKey;
+  currentRazorpayLink = CONFIG.razorpayLinks[planKey] || rzpLink;
+  const amount = label.split('—')[0].trim();
+  // Safely update elements (some were removed in redesign)
+  const setEl = (id, prop, val) => { const el = document.getElementById(id); if(el) el[prop] = val; };
+  setEl('modal-plan-name',    'textContent', label);
+  setEl('modal-amount',       'textContent', amount);
+  setEl('modal-pay-btn-text', 'textContent', 'Continue to Pay ' + amount);
+  setEl('modal-wa-error',     'textContent', '');
+  // Reset to step 1
+  const s1=document.getElementById('modal-step1'); if(s1) s1.style.display='block';
+  const s2=document.getElementById('modal-step2'); if(s2) s2.style.display='none';
+  setEl('modal-whatsapp',        'value', '');
+  setEl('modal-customer-name',   'value', '');
+  setEl('modal-unlock-input',    'value', '');
+  document.getElementById('payment-modal').classList.add('show');
+}
+function closePayment() { document.getElementById('payment-modal').classList.remove('show'); }
+function selectMethod(m) {
+  document.querySelectorAll('.pay-method').forEach(el=>el.classList.remove('selected'));
+  const mEl = document.getElementById('method-'+m); if(mEl) mEl.classList.add('selected');
+  const rzp = document.getElementById('razorpay-section'); if(rzp) rzp.style.display = m==='razorpay'?'block':'none';
+  const upi = document.getElementById('upi-section');
+  if(upi) { upi.style.display = m==='upi'?'block':'none'; upi.className='upi-detail'+(m==='upi'?' show':''); }
+}
+function proceedToPayment() {
+  const waInput = document.getElementById('modal-whatsapp');
+  const errEl   = document.getElementById('modal-wa-error');
+  const num     = waInput.value.trim();
+
+  // Validate 10-digit Indian mobile number
+  if(!num || num.length !== 10 || !/^[6-9]\d{9}$/.test(num)) {
+    errEl.textContent = '⚠️ Enter a valid 10-digit WhatsApp number (starting with 6, 7, 8 or 9)';
+    waInput.focus();
+    return;
+  }
+  errEl.textContent = '';
+
+  const name    = document.getElementById('modal-customer-name').value.trim() || 'Customer';
+  const fullNum = '+91' + num;
+
+  // Store for admin use — saved in localStorage so you can see it in admin panel
+  const pending = JSON.parse(localStorage.getItem('dw_pending_payments') || '[]');
+  pending.unshift({
+    whatsapp:   fullNum,
+    name,
+    planKey:    currentPaymentPlan,
+    planLabel:  CONFIG.planDetails[currentPaymentPlan]?.label || currentPaymentPlan,
+    amount:     CONFIG.planDetails[currentPaymentPlan]?.amount || '?',
+    time:       new Date().toLocaleString('en-IN'),
+    timestamp:  Date.now(),
+  });
+  if(pending.length > 100) pending.pop();
+  localStorage.setItem('dw_pending_payments', JSON.stringify(pending));
+
+  // Show step 2
+  document.getElementById('modal-step1').style.display = 'none';
+  document.getElementById('modal-step2').style.display = 'block';
+  document.getElementById('modal-wa-display').textContent = fullNum;
+
+  // Open Razorpay
+  if(currentRazorpayLink) {
+    window.open(currentRazorpayLink, '_blank');
+  }
+}
+
+function goRazorpay() { proceedToPayment(); }
+function copyUPI() {
+  navigator.clipboard?.writeText(CONFIG.upiId).then(()=>showToast('📋 UPI ID copied!'));
+}
+document.getElementById('payment-modal').addEventListener('click',function(e){if(e.target===this)closePayment();});
+
+// ══════════════════════════════════════
+//  TEMPLATES
+// ══════════════════════════════════════
+const TEMPLATES = [
+  {icon:'💼',label:'Job vs Job',factors:['Salary','Growth Potential','Work-Life Balance','Company Culture','Location','Job Security','Learning Opportunities']},
+  {icon:'🎓',label:'MBA vs Job',factors:['Career Growth','ROI / Financial','Network Value','Learning','Opportunity Cost','Brand Value','Time Investment']},
+  {icon:'🏙️',label:'Move City',factors:['Cost of Living','Career Opportunity','Quality of Life','Social Life','Safety','Weather','Distance from Family']},
+  {icon:'🏠',label:'Buy vs Rent',factors:['Monthly Cost','Long-term Value','Flexibility','Maintenance','Location Quality','Financial Risk','Lifestyle Fit']},
+  {icon:'🔄',label:'Switch Career',factors:['Passion Alignment','Financial Impact','Skill Transfer','Job Market Demand','Growth Potential','Risk Level','Work-Life Balance']},
+  {icon:'📚',label:'College Choice',factors:['Reputation / Ranking','Fees / Affordability','Location','Placements / ROI','Faculty Quality','Facilities','Cultural Fit']},
+  {icon:'🚀',label:'Startup vs Job',factors:['Risk Tolerance','Financial Runway','Learning Curve','Upside Potential','Stability','Time Commitment','Personal Mission Fit']},
+  {icon:'💻',label:'Tech Stack',factors:['Performance','Community Size','Hiring Pool','Learning Curve','Scalability','Cost','Long-term Maintenance']},
+  {icon:'🌍',label:'Study Abroad',factors:['Education Quality','Total Cost','Career Benefit','Life Experience','Distance from Home','Language Barrier','Post-study Opportunities']},
+  {icon:'💰',label:'Investment',factors:['Expected Returns','Risk Level','Liquidity','Time Horizon','Tax Benefits','Diversification','Track Record']},
+  {icon:'🏥',label:'Medical Choice',factors:['Success Rate','Side Effects','Total Cost','Recovery Time','Availability','Doctor Recommendation','Quality of Life Impact']},
+  {icon:'💑',label:'Relationship',factors:['Compatibility','Shared Values','Communication Quality','Future Goals Alignment','Emotional Support','Trust Level','Family Acceptance']},
+  {icon:'🏗️',label:'Business Idea',factors:['Market Size','Competition','Your Expertise','Capital Required','Profit Margin','Time to Revenue','Passion Fit']},
+  {icon:'🖥️',label:'Remote vs Office',factors:['Work-Life Balance','Productivity','Salary','Team Culture','Career Growth','Commute','Flexibility']},
+  {icon:'📱',label:'App / Product',factors:['User Need','Market Fit','Development Cost','Time to Launch','Revenue Potential','Competition','Your Capability']},
+];
+const AI_PROMPTS = [
+  'I have 2 job offers. One is higher salary but requires relocation...',
+  'Should I do MBA or continue working at my current company?',
+  'Thinking of moving from my hometown to Bangalore for better career...',
+  'Confused between starting a startup or taking a safe job offer...',
+  'Should I buy a flat now or keep renting for a few more years?',
+  'I have two business ideas and need help choosing which to pursue...',
+];
+
+function buildTemplateChips() {
+  document.getElementById('templates-row').innerHTML = TEMPLATES.map((t,i)=>
+    `<button class="template-chip" onclick="loadTemplate(${i})">${t.icon} ${t.label}</button>`
+  ).join('');
+  document.getElementById('ai-templates-row').innerHTML = AI_PROMPTS.map(p=>
+    `<button class="template-chip" onclick="setAIPrompt(this,'${p.replace(/'/g,"\\'")}')">💬 ${p.substring(0,32)}…</button>`
+  ).join('');
+}
+function setAIPrompt(el,txt){ document.getElementById('ai-input').value=txt; document.querySelectorAll('#ai-templates-row .template-chip').forEach(c=>c.classList.remove('active')); el.classList.add('active'); }
+function loadTemplate(i) {
+  const t=TEMPLATES[i];
+  document.getElementById('decision-title').value=t.label;
+  factors=t.factors.map(name=>({name,weight:7}));
+  renderFactors(); renderOptions();
+  document.querySelectorAll('#templates-row .template-chip').forEach((c,ci)=>c.classList.toggle('active',ci===i));
+  showToast('✅ Template loaded: '+t.label);
+}
+
+// ══════════════════════════════════════
+//  OPTIONS & FACTORS
+// ══════════════════════════════════════
+let options=[], factors=[], lastResults=null;
+const scores={};
+
+function addOption(name=''){
+  if(options.length>=6) return showToast('Maximum 6 options');
+  const id=Date.now()+Math.random();
+  options.push({id,name:name||`Option ${String.fromCharCode(65+options.length)}`});
+  renderOptions();
+}
+function removeOption(id){
+  if(options.length<=2) return showToast('Need at least 2 options');
+  options=options.filter(o=>o.id!==id); renderOptions();
+}
+function renderOptions(){
+  document.getElementById('options-container').innerHTML=options.map((o,i)=>`
+    <div class="option-card">
+      <div class="option-header">
+        <div class="option-num">${i+1}</div>
+        <button class="option-del" onclick="removeOption(${o.id})">×</button>
+      </div>
+      <input type="text" value="${o.name}" placeholder="Option name" oninput="options[${i}].name=this.value" style="margin-bottom:12px;"/>
+      ${factors.map((f,fi)=>`
+        <div class="factor-score-row">
+          <div class="factor-score-label" title="${f.name}">${f.name||'Factor '+(fi+1)}</div>
+          <div class="score-stars">${[1,2,3,4,5].map(s=>`
+            <div class="star ${getScore(o.id,fi)>=s?'active':''}" onclick="setScore(${o.id},${fi},${s})">${s}</div>
+          `).join('')}</div>
+        </div>
+      `).join('')||'<div style="font-size:12px;color:var(--text-dim)">Add factors first →</div>'}
+    </div>
+  `).join('');
+}
+function getScore(id,fi){return (scores[id]&&scores[id][fi])||0;}
+function setScore(id,fi,v){if(!scores[id])scores[id]={};scores[id][fi]=v;renderOptions();}
+
+function addFactor(name='',weight=7){
+  if(factors.length>=10) return showToast('Max 10 factors');
+  factors.push({name,weight}); renderFactors(); renderOptions();
+}
+function removeFactor(i){factors.splice(i,1);renderFactors();renderOptions();}
+function clearFactors(){factors=[];renderFactors();renderOptions();}
+function renderFactors(){
+  document.getElementById('factors-container').innerHTML=factors.map((f,i)=>`
+    <div style="display:flex;gap:10px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);align-items:center;flex-wrap:wrap;">
+      <input type="text" value="${f.name}" placeholder="e.g. Salary" oninput="factors[${i}].name=this.value;renderOptions()" style="flex:1;min-width:140px;"/>
+      <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:160px;">
+        <span style="font-size:11px;color:var(--text-dim);white-space:nowrap;">Weight:</span>
+        <input type="range" min="1" max="10" value="${f.weight}" oninput="factors[${i}].weight=parseInt(this.value);this.nextElementSibling.textContent=this.value"/>
+        <span class="range-val">${f.weight}</span>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="removeFactor(${i})" style="padding:7px 10px;">✕</button>
+    </div>
+  `).join('');
+}
+
+// ══════════════════════════════════════
+//  CALCULATE
+// ══════════════════════════════════════
+function calculate(){
+  if(options.length<2) return showToast('Add at least 2 options');
+  if(factors.length<1) return showToast('Add at least 1 factor');
+  const title=document.getElementById('decision-title').value||'My Decision';
+  const results=options.map(o=>{
+    let total=0,maxTotal=0;
+    const breakdown=factors.map(f=>{
+      const s=getScore(o.id,factors.indexOf(f));
+      total+=s*f.weight; maxTotal+=5*f.weight;
+      return{factor:f.name,score:s,weight:f.weight};
+    });
+    const pct=maxTotal>0?Math.round((total/maxTotal)*100):0;
+    return{name:o.name,score:total,pct,breakdown,id:o.id};
+  });
+  results.sort((a,b)=>b.score-a.score);
+  lastResults={title,results};
+  renderResults(title,results);
+  document.getElementById('results-box').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function renderResults(title,results){
+  const box=document.getElementById('results-box');
+  box.style.display='block';
+  const w=results[0];
+  let pros=[],cons=[];
+  if(results.length>=2){
+    const r=results[1];
+    factors.forEach(f=>{
+      const fi=factors.indexOf(f);
+      const ws=getScore(w.id,fi),rs=getScore(r.id,fi);
+      if(ws>rs)pros.push(`Stronger ${f.name}: ${ws}/5 vs ${rs}/5`);
+      else if(ws<rs)cons.push(`Weaker ${f.name}: ${ws}/5 vs ${rs}/5`);
+    });
+  }
+  box.innerHTML=`
+    <div class="results-title">📊 Results: ${title}</div>
+    <div class="winner-badge">🏆 Best Choice: ${w.name} — ${w.pct}%</div>
+    <div class="result-bars" style="margin-bottom:20px;">
+      ${results.map((r,i)=>`
+        <div class="result-bar-row">
+          <div class="result-bar-label">${['🥇','🥈','🥉'][i]||'#'+(i+1)} ${r.name}</div>
+          <div class="result-bar-track"><div class="result-bar-fill" style="width:${r.pct}%;background:${['var(--accent3)','var(--accent)','var(--text-dim)'][i]||'var(--border)'}"></div></div>
+          <div class="result-bar-score">${r.pct}%</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="reasoning-grid" style="margin-bottom:16px;">
+      <div class="reasoning-block">
+        <h4 style="color:var(--accent3)">✅ Why ${w.name} wins</h4>
+        <ul>${pros.length?pros.map(p=>`<li><div class="dot" style="background:var(--accent3)"></div>${p}</li>`).join(''):w.breakdown.filter(b=>b.score>=4).slice(0,4).map(b=>`<li><div class="dot" style="background:var(--accent3)"></div>Strong ${b.factor}: ${b.score}/5</li>`).join('')||'<li>Highest overall weighted score</li>'}</ul>
+      </div>
+      <div class="reasoning-block">
+        <h4 style="color:var(--accent2)">⚠️ Watch out for</h4>
+        <ul>${cons.length?cons.map(c=>`<li><div class="dot" style="background:var(--accent2)"></div>${c}</li>`).join(''):w.breakdown.filter(b=>b.score<=2).slice(0,3).map(b=>`<li><div class="dot" style="background:var(--accent2)"></div>Low ${b.factor}: ${b.score}/5</li>`).join('')||'<li>Review all lower-scored factors carefully</li>'}</ul>
+      </div>
+    </div>
+    <div class="ai-action">
+      <span style="font-size:18px;">💡</span>
+      <div><strong>Suggested Action</strong>
+      <strong>${w.name}</strong> scores ${w.pct}% — ${results.length>=2&&Math.abs(results[0].pct-results[1].pct)<10?`Very close to ${results[1].name} (${results[1].pct}%). Re-check your highest-weight factors before deciding.`:'a clear winner. Proceed with confidence, but review the watch-out factors above.'}
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+      <button class="btn btn-outline btn-sm" onclick="saveDecision()">💾 Save Decision</button>
+      <button class="btn btn-outline btn-sm" onclick="openShare()">📤 Share Result</button>
+      ${isPro?`<button class="btn btn-sm" style="background:var(--accent4);color:#000;font-weight:700;" onclick="exportPDF('manual')">📄 Export PDF</button>`:`<button class="btn btn-outline btn-sm" onclick="showPage('pricing')" style="border-color:var(--accent4);color:var(--accent4);">📄 PDF (Pro)</button>`}
+    </div>
+  `;
+}
+
+// ══════════════════════════════════════
+//  AI MODE
+// ══════════════════════════════════════
+let aiCallsToday = parseInt(localStorage.getItem('dw_ai_calls_'+new Date().toDateString())||'0');
+async function runAI(){
+  const input=document.getElementById('ai-input').value.trim();
+  if(!input) return showToast('Describe your situation first');
+  if(!isPro && aiCallsToday>=3) return showToast('Free limit: 3 AI queries/day. Upgrade for unlimited.');
+  document.getElementById('ai-loading').style.display='flex';
+  document.getElementById('ai-result').classList.remove('show');
+  const isDeep = isPro;
+  const sys = isDeep
+    ? `You are DecideWise AI, an expert decision intelligence engine. Provide a comprehensive, deeply researched analysis.
+Respond ONLY in this exact JSON (no markdown, no backticks):
+{"recommendation":"clear 1-2 sentence verdict with confidence level","option_chosen":"best option name","reasoning":"4-5 sentences of thorough reasoning covering all angles","pros":["detailed point 1","detailed point 2","detailed point 3","detailed point 4","detailed point 5"],"cons":["risk 1 with mitigation","risk 2 with mitigation","risk 3"],"hidden_factors":["factor the user may not have considered 1","factor 2","factor 3"],"timeline":"what the next 3-6 months look like if they choose this","action":"specific concrete next step with a deadline","confidence":"High/Medium/Low","one_line":"one punchy memorable sentence summarizing the decision"}`
+    : `You are DecideWise AI, a structured decision intelligence engine. Analyze the user's situation and provide a structured recommendation.
+Respond ONLY in this exact JSON (no markdown, no backticks):
+{"recommendation":"one sentence verdict","option_chosen":"name of best option","reasoning":"2-3 sentences explaining why","pros":["point1","point2","point3"],"cons":["risk1","risk2"],"action":"one concrete next step the person should take today"}`;
+  try{
+    const res=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:sys,max_tokens:isDeep?2000:1000,messages:[{role:'user',content:input}]})});
+    if(!res.ok){
+      const err=await res.json().catch(()=>({}));
+      throw new Error(err.error||'API error '+res.status);
+    }
+    const data=await res.json();
+    const text=data.content?.map(b=>b.text||'').join('')||'';
+    let parsed; try{parsed=JSON.parse(text.replace(/```json|```/g,'').trim());}catch(e){parsed=null;}
+    document.getElementById('ai-loading').style.display='none';
+    if(!isPro){aiCallsToday++;localStorage.setItem('dw_ai_calls_'+new Date().toDateString(),aiCallsToday);}
+    renderAIResult(parsed,text,isDeep);
+  }catch(err){
+    document.getElementById('ai-loading').style.display='none';
+    console.error('AI error:',err);
+    showToast('⚠️ AI error: '+( err.message||'please try again'));
+  }
+}
+function renderAIResult(parsed,raw){
+  const box=document.getElementById('ai-result');
+  if(!parsed){box.innerHTML=`<div class="ai-recommendation"><h3>Analysis</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.7;">${raw}</p></div>`;box.classList.add('show');return;}
+  const isDeep = isPro && parsed.hidden_factors;
+  const confColor = parsed.confidence==='High'?'var(--accent3)':parsed.confidence==='Low'?'var(--accent2)':'var(--accent4)';
+  box.innerHTML=`
+    ${isDeep&&parsed.one_line?`<div style="background:linear-gradient(135deg,rgba(108,99,255,0.2),rgba(255,101,132,0.1));border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:14px;font-family:var(--font-head);font-size:17px;font-weight:700;text-align:center;">"${parsed.one_line}"</div>`:''}
+    <div class="ai-recommendation">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+        <h3 style="margin:0;">🏆 ${parsed.option_chosen||'Recommendation'}</h3>
+        ${parsed.confidence?`<span style="font-size:11px;font-weight:700;color:${confColor};background:rgba(108,99,255,0.1);padding:3px 10px;border-radius:100px;">Confidence: ${parsed.confidence}</span>`:''}
+      </div>
+      <p>${parsed.recommendation}</p>
+    </div>
+    <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:16px;margin-bottom:14px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:7px;font-weight:700;">Reasoning</div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.8;">${parsed.reasoning}</p>
+    </div>
+    <div class="ai-sections" style="margin-bottom:14px;">
+      <div class="ai-section"><h4 style="color:var(--accent3)">✅ Pros</h4><ul>${parsed.pros?.map(p=>`<li><span class="tick">✓</span>${p}</li>`).join('')||''}</ul></div>
+      <div class="ai-section"><h4 style="color:var(--accent2)">⚠️ Cons / Risks</h4><ul>${parsed.cons?.map(c=>`<li><span class="cross">✗</span>${c}</li>`).join('')||''}</ul></div>
+    </div>
+    ${isDeep&&parsed.hidden_factors?.length?`
+    <div style="background:rgba(249,202,36,0.07);border:1px solid rgba(249,202,36,0.2);border-radius:var(--radius-sm);padding:16px;margin-bottom:14px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent4);margin-bottom:10px;font-weight:700;">💡 Hidden Factors You May Not Have Considered</div>
+      <ul style="list-style:none;">${parsed.hidden_factors.map(h=>`<li style="font-size:13px;color:var(--text-muted);padding:4px 0;display:flex;gap:7px;"><span style="color:var(--accent4);">→</span>${h}</li>`).join('')}</ul>
+    </div>`:''}
+    ${isDeep&&parsed.timeline?`
+    <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:16px;margin-bottom:14px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:7px;font-weight:700;">📅 What the Next 3–6 Months Look Like</div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">${parsed.timeline}</p>
+    </div>`:''}
+    <div class="ai-action"><span style="font-size:18px;">🎯</span><div><strong>Next Step</strong>${parsed.action}</div></div>
+    <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
+      <button class="btn btn-outline btn-sm" onclick="saveAIDecision()">💾 Save</button>
+      <button class="btn btn-outline btn-sm" onclick="openShare()">📤 Share</button>
+      ${isPro?`<button class="btn btn-sm" style="background:var(--accent4);color:#000;font-weight:700;" onclick="exportPDF('ai')">📄 Export PDF</button>`:`<button class="btn btn-outline btn-sm" onclick="showPage('pricing')" style="border-color:var(--accent4);color:var(--accent4);">📄 PDF (Pro)</button>`}
+    </div>
+    ${proType==='single'&&singleUsesLeft<=0?`<div style="margin-top:12px;padding:12px 16px;background:rgba(255,101,132,0.08);border-radius:var(--radius-sm);font-size:13px;color:var(--accent2);">Your single-decision credit has been used. <button onclick="showPage('pricing')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-family:var(--font-body);font-size:13px;">Get more →</button></div>`:''}
+  `;
+  box.classList.add('show');
+  // If single use, deduct credit
+  if(proType==='single') useSingleCredit();
+}
+
+// ══════════════════════════════════════
+//  SAVE / LOAD
+// ══════════════════════════════════════
+let savedDecisions=JSON.parse(localStorage.getItem('dw_saved')||'[]');
+function saveDecision(){
+  if(!lastResults) return showToast('Calculate first, then save');
+  if(!isPro && savedDecisions.length>=3) return showToast('Free limit: 3 saves. Upgrade for unlimited →');
+  const entry={id:Date.now(),type:'manual',title:document.getElementById('decision-title').value||'Untitled',winner:lastResults.results[0].name,score:lastResults.results[0].pct,date:new Date().toLocaleDateString('en-IN')};
+  savedDecisions.unshift(entry);
+  localStorage.setItem('dw_saved',JSON.stringify(savedDecisions));
+  showToast('✅ Saved!'); renderSaved();
+}
+function saveAIDecision(){
+  if(!isPro && savedDecisions.length>=3) return showToast('Free limit: 3 saves. Upgrade for unlimited →');
+  const entry={id:Date.now(),type:'ai',title:document.getElementById('ai-input').value.substring(0,55)+'…',date:new Date().toLocaleDateString('en-IN')};
+  savedDecisions.unshift(entry);
+  localStorage.setItem('dw_saved',JSON.stringify(savedDecisions));
+  showToast('✅ Saved!'); renderSaved();
+}
+function deleteSaved(id){savedDecisions=savedDecisions.filter(s=>s.id!==id);localStorage.setItem('dw_saved',JSON.stringify(savedDecisions));renderSaved();}
+function renderSaved(){
+  const list=document.getElementById('saved-list');
+  const none=document.getElementById('no-saved');
+  if(!savedDecisions.length){list.innerHTML='';none.style.display='block';return;}
+  none.style.display='none';
+  list.innerHTML=savedDecisions.map(s=>`
+    <div class="saved-item">
+      <div>
+        <div style="font-size:14px;font-weight:500;">${s.type==='ai'?'🤖':'⚖️'} ${s.title}</div>
+        <div class="saved-meta">${s.date}</div>
+        ${s.winner?`<div class="saved-winner">🏆 ${s.winner} — ${s.score}%</div>`:''}
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="deleteSaved(${s.id})">Delete</button>
+    </div>
+  `).join('');
+}
+
+// ══════════════════════════════════════
+//  SHARE
+// ══════════════════════════════════════
+function openShare(){
+  const title=document.getElementById('decision-title').value||'My Decision';
+  const winner=lastResults?.results[0];
+  document.getElementById('share-content').innerHTML=`
+    <div style="font-size:15px;font-weight:600;margin-bottom:6px;">${title}</div>
+    ${winner?`<div style="color:var(--accent3);font-weight:700;font-size:14px;">🏆 Best: ${winner.name} (${winner.pct}%)</div>`:''}
+  `;
+  document.getElementById('share-modal').classList.add('show');
+}
+function closeShare(){document.getElementById('share-modal').classList.remove('show');}
+function copyLink(){navigator.clipboard?.writeText(window.location.href);showToast('🔗 Link copied!');closeShare();}
+function shareWhatsApp(){const t=document.getElementById('decision-title').value||'my decision';window.open(`https://wa.me/?text=I just used DecideWise to decide: ${t}! Try it free 👉 ${window.location.href}`);closeShare();}
+function shareTwitter(){const t=document.getElementById('decision-title').value||'my decision';window.open(`https://twitter.com/intent/tweet?text=Just made a big decision (${t}) using DecideWise — structured scoring, AI mode, 60 seconds. Beats overthinking! 🧠 ${window.location.href}`);closeShare();}
+document.getElementById('share-modal').addEventListener('click',function(e){if(e.target===this)closeShare();});
+
+// ══════════════════════════════════════
+//  MODE SWITCHER
+// ══════════════════════════════════════
+function switchMode(m){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.mode-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+m).classList.add('active');
+  document.getElementById('tab-'+m).classList.add('active');
+  if(m==='saved')renderSaved();
+}
+function scrollToApp(){document.getElementById('app-anchor').scrollIntoView({behavior:'smooth'});}
+
+// ══════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+
+// ══════════════════════════════════════
+//  PDF EXPORT
+// ══════════════════════════════════════
+function exportPDF(type) {
+  if(!isPro) return showToast('PDF export is a Pro feature. Upgrade to download.');
+  const title = type==='ai'
+    ? (document.getElementById('ai-input').value.substring(0,60)||'AI Decision')
+    : (document.getElementById('decision-title').value||'My Decision');
+  const dateStr = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  let content = '';
+  if(type==='ai') {
+    const box = document.getElementById('ai-result');
+    content = box.innerHTML
+      .replace(/<button[^>]*>.*?<\/button>/g,'')
+      .replace(/<style[^>]*>.*?<\/style>/g,'');
+  } else if(lastResults) {
+    const r = lastResults.results;
+    content = `<h2 style="color:#6c63ff;">Score Breakdown</h2>` +
+      r.map(opt=>`<div style="margin-bottom:12px;"><strong>${opt.name}</strong>: ${opt.pct}% match</div>`).join('') +
+      `<h2 style="color:#6c63ff;margin-top:20px;">Winner</h2><p><strong>🏆 ${r[0].name}</strong> — ${r[0].pct}% weighted score</p>`;
+  }
+  const html_pdf = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <style>
+    body{font-family:Georgia,serif;max-width:700px;margin:40px auto;color:#1a1a2e;line-height:1.7;}
+    h1{color:#6c63ff;font-size:26px;border-bottom:2px solid #6c63ff;padding-bottom:10px;}
+    h2{color:#333;font-size:18px;margin-top:24px;}
+    h3{color:#6c6
